@@ -6,9 +6,10 @@ package edu.gatech.oad.antlab.person;
  *  modified string 
  *  
  *  @author Bob
+ *  @author Kyrsten Greenfield
  *  @version 1.1
  */
-public class Person1 { //completed by Kyrsten Greenfield
+public class Person1 { 
   /** Holds the persons real name */
   private String name;
   	/**
