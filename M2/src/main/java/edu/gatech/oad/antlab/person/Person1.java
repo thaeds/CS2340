@@ -6,9 +6,10 @@ package edu.gatech.oad.antlab.person;
  *  modified string 
  *  
  *  @author Bob
+ *  @author Kyrsten Greenfield
  *  @version 1.1
  */
-public class Person1 { //completed by Kyrsten
+public class Person1 { 
   /** Holds the persons real name */
   private String name;
   	/**
@@ -29,7 +30,7 @@ public class Person1 { //completed by Kyrsten
 	 * @param input the string to be modified
 	 * @return the modified string
 	 */
-	private String calc(String input) {
+	private String calc(String input) { 
 	  return input.substring(2) + input.substring(0, 2);
 	}
 	
