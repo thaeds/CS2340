@@ -1,4 +1,4 @@
-package edu.gatech.oad.antlab.person;
+    package edu.gatech.oad.antlab.person;
 
 /**
  *  A simple class for person 5
@@ -31,7 +31,8 @@ public class Person5 {
 	 */
 	private String calc(String input) {
 	  //Person 5 put your implementation here
-	  return null;
+	  input = input.substring(2) + input.substring(0,2);
+          return input;
 	}
 	
 	/**
