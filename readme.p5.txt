@@ -1,4 +1,5 @@
-CS2340 - Bits, Please!
+# CS2340
+Objects and Design Repository
 
-Name - Hyunook Kwon
-GTID - hkwon62
+NAME: Hyunook Kwon
+GTID: hkwon62
