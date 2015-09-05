@@ -1,4 +1,4 @@
-# CS2340
+# CS2340 - Bits, please!
 Objects and Design Repository
 
 NAME: Hyunook Kwon
