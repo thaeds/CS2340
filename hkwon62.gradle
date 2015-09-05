@@ -1,7 +1,7 @@
-appply plugin: 'java'
+apply plugin: 'java'
 
 dependencies {
-    complile files('lib\resources.jar')
+    compile files('lib\resources.jar')
 }
 
 jar {
