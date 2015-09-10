@@ -1,5 +1,6 @@
 package edu.gatech.oad.antlab.person;
 
+import java.lang.Integer;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.Random;
@@ -35,13 +36,13 @@ public class Person2 {
      */
     private String calc(String input) {
         String out = "";
-        ArrayList<int> hold = new ArrayList<>();
+        ArrayList<Integer> hold = new ArrayList<>();
         Random gen = new Random();
         while (hold.size() < input.length()) {
             int num = gen.nextInt(input.length());
             if (!hold.contains(num)) {
                 out += input.charAt(num);
-                hold.add(num)
+                hold.add(num);
             }
         }
         return out;
