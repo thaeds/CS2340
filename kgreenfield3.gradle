@@ -1,16 +1,20 @@
-
 apply plugin: 'java'
 dependencies {
     compile files('lib/resources.jar')
 }
 defaultTasks 'build', 'jar'
 sourceCompatibility = 1.8
-targetCompatibility = 1.8
-version = '1.1'
+version = '1.0'
+compileJava {
+}
+compileTestJava {
+}
+clean {
+}
 jar {
     manifest {
-        attributes 'Implementation-Title': 'M2', 'Implemenation-Version': 1.0,
-                'Main-Class': "edu.gatech.oad.antlab.pkg1.AntLabMain",
-                'Class-Path': "../../../lib/resources.jar"
+        baseName = 'M2'
+        attributes ('Implementation-Title': 'M2', "Main-Class": "edu.gatech.oad.antlab.pkg1.AntLabMain",
+                "Class-Path": "../../lib/resources.jar")
     }
 }
