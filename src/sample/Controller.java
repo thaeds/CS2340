@@ -1,8 +1,12 @@
 package sample;
 
+import Map.MapController;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
@@ -13,8 +17,12 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
     @FXML private ChoiceBox difficulty;
     @FXML private ChoiceBox map;
     @FXML private ChoiceBox players;
@@ -34,10 +42,20 @@ public class Controller {
     @FXML private Button continueButton;
     @FXML private Text finished;
     @FXML private Text playerIndicator;
+
+    private ArrayList<Player> playerList = new ArrayList<>();
     private int numberOfPlayers;
     private int count = 1;
     private int playerNum = 1;
-    @FXML public void initialize() {
+    Stage prevStage;
+
+    public void setPrevStage(Stage stage){
+        this.prevStage = stage;
+    }
+
+    @Override
+    @FXML
+    public void initialize(URL location, ResourceBundle resources) {
         window.getChildren().remove(name);
         window.getChildren().remove(race);
         window.getChildren().remove(color);
@@ -48,6 +66,7 @@ public class Controller {
         window.getChildren().remove(finished);
         window.getChildren().remove(playerIndicator);
         players.setValue(1);
+
         Image mule = new Image(getClass().getResource("mule.jpg").toExternalForm());
         Image muleLogo = new Image(getClass().getResource("muleLogo.png").toExternalForm());
         ImagePattern img = new ImagePattern(mule);
@@ -81,7 +100,6 @@ public class Controller {
         window.getChildren().add(continueButton);
     }
     private void purgePlayerConfig() {
-        playerNum++;
         name.clear();
         window.getChildren().remove(color);
         color.setValue(Color.WHITE);
@@ -90,13 +108,32 @@ public class Controller {
         window.getChildren().add(color);
 
     }
-    @FXML public void nextPlayer() {
-        if (count < numberOfPlayers) {
-            purgePlayerConfig();
-            count++;
-        } else {
-            window.getChildren().remove(0,window.getChildren().size());
-            window.getChildren().add(finished);
+    @FXML public void nextPlayer() throws Exception{
+        if(name.getText().trim().equals("")) {
+            name.setText("Please enter a name!");
+        } else if (!name.getText().trim().equals("")) {
+            Player p = new Player(name.getText(), race.getSelectionModel().getSelectedItem().toString(), color.getValue());
+            System.out.println(p);
+            playerList.add(p);
+            playerNum++;
+            if (count < numberOfPlayers) {
+                purgePlayerConfig();
+                count++;
+            } else {
+                startGame();
+            }
         }
+    }
+    public void startGame() throws Exception {
+        Context.setPlayers(playerList);
+        Stage stage = new Stage();
+        stage.setTitle("M.U.L.E");
+        Pane myPane = null;
+        FXMLLoader ldr = new FXMLLoader();
+        myPane = ldr.load(getClass().getResource("../Map/map.fxml"));
+        Scene scene = new Scene(myPane);
+        stage.setScene(scene);
+        prevStage.close();
+        stage.show();
     }
 }

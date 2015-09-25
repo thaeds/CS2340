@@ -90,12 +90,7 @@
                </font>
             </Text>
             <Button fx:id="continueButton" layoutX="325.0" layoutY="366.0" mnemonicParsing="false" onMouseClicked="#nextPlayer" prefHeight="26.0" prefWidth="150.0" text="Next Player?" />
-            <Text fx:id="finished" fill="#ff0b0b" layoutX="141.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="END OF INTERFACE DEMO!!!" wrappingWidth="584.6829261779785">
-               <font>
-                  <Font name="System Bold" size="96.0" />
-               </font>
-            </Text>
-            <Text fx:id="playerIndicator" fill="WHITE" layoutX="14.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" >
+            <Text fx:id="playerIndicator" fill="WHITE" layoutX="14.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1">
              <font>
                  <Font name="System Bold" size="20.0" />
              </font>
