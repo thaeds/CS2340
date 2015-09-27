@@ -111,7 +111,7 @@ public class Controller implements Initializable {
     @FXML public void nextPlayer() throws Exception{
         if(name.getText().trim().equals("")) {
             name.setText("Please enter a name!");
-        } else if (!name.getText().trim().equals("")) {
+        } else if (!name.getText().trim().equals("") && !name.getText().trim().equals("Please enter a name!")) {
             Player p = new Player(name.getText(), race.getSelectionModel().getSelectedItem().toString(), color.getValue());
             System.out.println(p);
             playerList.add(p);
@@ -127,6 +127,7 @@ public class Controller implements Initializable {
     public void startGame() throws Exception {
         Context.setPlayers(playerList);
         Stage stage = new Stage();
+        stage.setResizable(false);
         stage.setTitle("M.U.L.E");
         Pane myPane = null;
         FXMLLoader ldr = new FXMLLoader();

@@ -14,8 +14,8 @@ public class Main extends Application {
         Parent root = (Parent) loader.load();
         Controller control = loader.getController();
         control.setPrevStage(primaryStage);
-
         primaryStage.setTitle("M.U.L.E.");
+        primaryStage.setResizable(false);
         Scene s = new Scene(root, 800, 480);
         primaryStage.setScene(s);
         primaryStage.show();

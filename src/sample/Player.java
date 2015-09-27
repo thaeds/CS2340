@@ -75,6 +75,6 @@ public class Player {
         }
     @Override
     public String toString() {
-        return "Name: " + name + "| Race: " + race ;
+        return "Name: " + name + "\n| Race: " + race ;
     }
 }
