@@ -1,19 +1,20 @@
 package Map;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Shadow;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 import sample.*;
 import sample.Player;
 
@@ -279,8 +280,28 @@ public class MapController {
         map.nextPlayer();
     }
     @FXML
+    private Stage stage;
+    private Stage prevStage = null;
+    @FXML
     private void enterTown() {
         System.out.println("Entering Town");
+        Pane myPane = null;
+        FXMLLoader ldr = new FXMLLoader();
+        try {
+            myPane = ldr.load(getClass().getResource("town.fxml"));
+        } catch (Exception e) {
+            System.out.println("Exception loading town.fxml");
+            return;
+        }
+        Scene scene = new Scene(myPane);
+        prevStage = stage;
+        stage.setScene(scene);
+        stage.setOnCloseRequest(a -> {
+            Platform.exit();
+            System.exit(0);
+        });
+        prevStage.close();
+        stage.show();
     }
     private void enterPub() {
         System.out.println("Entering Pub");
