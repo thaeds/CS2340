@@ -49,6 +49,12 @@ public class TownController {
     private GridPane buildings;
     @FXML
     public void initialize(){
+        System.out.println("TownController Initialized");
+        Building pub = new Building("pub.jpg");
+        buildings.add(pub, 0, 0);
+        pub.setOnMouseClicked(a -> {
+            enterPub();
+        });
     }
     private Stage prevStage = null;
     @FXML
@@ -62,15 +68,15 @@ public class TownController {
 //        currentPlayer.setBalance(currentPlayer.getBalance() + bonus);
 //        pubmsg = new TextField();
 //        pubmsg.setText("You earned " + bonus + " dollars from gambling!");
-//        Pane myPane = null;
-//        FXMLLoader ldr = new FXMLLoader();
-//        try {
-//            // I have no idea why I can't get this to work
-//            myPane = ldr.load(getClass().getResource("pub.fxml"));
-//        } catch (Exception e) {
-//            System.out.println("Exception loading pub.fxml");
-//            return;
-//        }
+        Pane myPane = null;
+        FXMLLoader ldr = new FXMLLoader();
+        try {
+            // I have no idea why I can't get this to work
+            myPane = ldr.load(getClass().getResource("../Pub/pub.fxml"));
+        } catch (Exception e) {
+            System.out.println("Exception loading pub.fxml");
+            return;
+        }
 //        Image pub = new Image(getClass().getResource("pubinside.jpg").toExternalForm());
 //        ImagePattern img = new ImagePattern(pub);
 //        BackgroundFill bgFill = new BackgroundFill(img, new CornerRadii(0), new Insets(0,0,0,0));
@@ -78,16 +84,16 @@ public class TownController {
 //        background.setBackground(bg);
 ////        outerWindow.setStyle("-fx-background-image: url('" + "pubinside.jpg" + "')");
 //
-//        Scene scene = new Scene(myPane);
-//        prevStage = (Stage) townWindow.getScene().getWindow();
-//        Stage stage = new Stage();
-//        stage.setScene(scene);
-//        stage.setOnCloseRequest(a -> {
-//            Platform.exit();
-//            System.exit(0);
-//        });
-//        prevStage.close();
-//        stage.show();
+        Scene scene = new Scene(myPane);
+        prevStage = (Stage) townWindow.getScene().getWindow();
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setOnCloseRequest(a -> {
+            Platform.exit();
+            System.exit(0);
+        });
+        prevStage.close();
+        stage.show();
     }
 
 }
