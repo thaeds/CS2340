@@ -1,5 +1,6 @@
 package Map;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
@@ -12,6 +13,7 @@ public class Mountain extends Tile {
         this.setOrePoints(2);
         this.setOwner(null);
         this.setIsOwned(false);
-        representation = new ImageView(getClass().getResource("mountain.png").toExternalForm());
+        this.setCost(100);
+        this.setImage(new Image(getClass().getResource("mountain.png").toExternalForm()));
     }
 }

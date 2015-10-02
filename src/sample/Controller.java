@@ -1,6 +1,7 @@
 package sample;
 
 import Map.MapController;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -134,6 +135,10 @@ public class Controller implements Initializable {
         myPane = ldr.load(getClass().getResource("../Map/map.fxml"));
         Scene scene = new Scene(myPane);
         stage.setScene(scene);
+        stage.setOnCloseRequest(a -> {
+            Platform.exit();
+            System.exit(0);
+        });
         prevStage.close();
         stage.show();
     }

@@ -1,5 +1,6 @@
 package Map;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
@@ -12,6 +13,7 @@ public class River extends Tile {
         this.setEnergyPoints(2);
         this.setFoodPoints(4);
         this.setOrePoints(0);
-        representation = new ImageView(getClass().getResource("river.png").toExternalForm());
+        this.setCost(100);
+        this.setImage(new Image(getClass().getResource("river.png").toExternalForm()));
     }
 }

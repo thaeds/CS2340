@@ -1,19 +1,19 @@
 package Map;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import sample.*;
 
 /**
  * Created by Sergey on 9/24/15.
  */
-public class Tile {
+public class Tile extends ImageView {
     private boolean isOwned;
     private int cost;
     private int FoodPoints;
     private int EnergyPoints;
     private int OrePoints;
     private Player owner;
-    public ImageView representation;
 
     public boolean isOwned() {
         return isOwned;
@@ -23,9 +23,14 @@ public class Tile {
         this.setEnergyPoints(2);
         this.setFoodPoints(3);
         this.setOrePoints(1);
+        this.setCost(100);
         isOwned = false;
         owner = null;
-        representation = new ImageView(getClass().getResource("plain.png").toExternalForm());
+        this.setImage(new Image(getClass().getResource("plain.png").toExternalForm()));
+    }
+
+    public int getScore() {
+        return EnergyPoints + FoodPoints + OrePoints;
     }
 
     public void setIsOwned(boolean isOwned) {
