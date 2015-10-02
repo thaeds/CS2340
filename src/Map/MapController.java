@@ -29,6 +29,7 @@ import java.util.*;
 public class MapController {
     Town t;
     private class MapStuff extends TimerTask {
+        private ArrayDeque<Player> turn = new ArrayDeque<>();
         Turn ordering;
         public void run() {
             nextPlayer();
@@ -208,8 +209,8 @@ public class MapController {
         }
         public void setPlayers(ArrayList<Player> p) {
             players.addAll(p);
-            ordering = new Turn(players);
-            //turn.addAll(p);
+            //ordering = new Turn(players);
+            turn.addAll(p);
             nextPlayer();
         }
         private Tile getTileFromRepresentation(Node v) {
@@ -226,7 +227,8 @@ public class MapController {
             if (selectionPhaseOver) {
                 messageBox.setText("Selection Phase is over! Begging Game!");
             }
-            currentPlayer = ordering.nextTurn();
+            currentPlayer = turn.poll();
+
             System.out.println("Ordering player: " + currentPlayer);
             if(currentPlayer == null) {
                 System.out.println("NO PLAYERS IN GAME TEST CASE GENERATED!!!");
@@ -234,7 +236,7 @@ public class MapController {
             playerInfo.setText(currentPlayer.toString() + "| Number of tiles: " + currentPlayer.getTiles().size());
             playerInfo.setBackground(new Background(new BackgroundFill(currentPlayer.getColor(), CornerRadii.EMPTY, Insets.EMPTY)));
             System.out.println("Current Player: " + currentPlayer);
-            //turn.add(currentPlayer);
+            turn.add(currentPlayer);
             setTileOwner(currentPlayer);
         }
 
