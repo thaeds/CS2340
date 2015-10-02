@@ -43,24 +43,7 @@ public class MapController {
         private void startMap1() {
             t = new Town();
             t.setOnMouseClicked(a -> {
-                Stage stage = new Stage();
-                stage.setResizable(false);
-                stage.setTitle("M.U.L.E");
-                FXMLLoader ldr = new FXMLLoader();
-                Pane myPane = null;
-                try {
-                    myPane = ldr.load(getClass().getResource("town.fxml"));
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    return;}
-                Scene scene = new Scene(myPane);
-                stage.setScene(scene);
-                stage.setOnCloseRequest(b -> {
-                    Platform.exit();
-                    System.exit(0);
-                });
-                prevStage.close();
-                stage.show();
+                Context.loadTown();
             });
             tiles.add(t, 4, 2);
 
