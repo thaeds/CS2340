@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<Pane fx:id="townWindow" maxHeight="400.0" maxWidth="585.0" minHeight="400.0" minWidth="585.0" prefHeight="400.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Map.MapController">
+<Pane fx:id="townWindow" maxHeight="400.0" maxWidth="585.0" minHeight="400.0" minWidth="585.0" prefHeight="400.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Town.TownController">
    <children>
       <GridPane fx:id="buildings" gridLinesVisible="true" maxHeight="334.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="585.0" prefHeight="400.0" prefWidth="585.0">
          <columnConstraints>

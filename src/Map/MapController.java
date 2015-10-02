@@ -27,6 +27,7 @@ import java.util.*;
  * Created by Sergey on 9/24/15.
  */
 public class MapController {
+    Town t;
     private class MapStuff extends TimerTask {
         Turn ordering;
         public void run() {
@@ -39,8 +40,27 @@ public class MapController {
             setMouseOver();
         }
         private void startMap1() {
-            Town t = new Town();
-
+            t = new Town();
+            t.setOnMouseClicked(a -> {
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.setTitle("M.U.L.E");
+                FXMLLoader ldr = new FXMLLoader();
+                Pane myPane = null;
+                try {
+                    myPane = ldr.load(getClass().getResource("town.fxml"));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    return;}
+                Scene scene = new Scene(myPane);
+                stage.setScene(scene);
+                stage.setOnCloseRequest(b -> {
+                    Platform.exit();
+                    System.exit(0);
+                });
+                prevStage.close();
+                stage.show();
+            });
             tiles.add(t, 4, 2);
 
             River r1 = new River();
@@ -169,9 +189,6 @@ public class MapController {
                     s.setWidth(0);
                     s.setHeight(0);
                     if(n.getClass().getName() == "Map.Town") {
-                        n.setOnMouseClicked(a -> {
-                            enterTown();
-                        });
                     } else {
                         n.setOnMouseClicked(a -> {
                             Tile t = (Tile) n;
