@@ -164,11 +164,17 @@ public class MapController {
                     s.setRadius(50);
                     s.setWidth(0);
                     s.setHeight(0);
-                    n.setOnMouseClicked(a -> {
-                        Tile t = (Tile) n;
-                        buyTile(p, t, s);
-                        nextPlayer();
-                    });
+                    if(n.getClass().getName() == "Map.Town") {
+                        n.setOnMouseClicked(a -> {
+                            enterTown();
+                        });
+                    } else {
+                        n.setOnMouseClicked(a -> {
+                            Tile t = (Tile) n;
+                            buyTile(p, t, s);
+                            nextPlayer();
+                        });
+                    }
                 } else {
                     n.setOnMouseClicked(a -> {
                         Tile t = (Tile)n;
@@ -271,6 +277,13 @@ public class MapController {
     @FXML
     private void nextPlayer(){
         map.nextPlayer();
+    }
+    @FXML
+    private void enterTown() {
+        System.out.println("Entering Town");
+    }
+    private void enterPub() {
+        System.out.println("Entering Pub");
     }
 
 }
