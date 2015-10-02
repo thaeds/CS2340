@@ -8,11 +8,14 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Shadow;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import sample.*;
@@ -269,10 +272,11 @@ public class MapController {
     private ArrayList<Player> players = new ArrayList<>();
     private HashMap<Node, Tile> tileImages = new HashMap<>();
     private MapStuff map;
+    Timer timer;
     @FXML
     public void initialize(){
         map = new MapStuff();
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.schedule(map, 0, 5000);
     }
     @FXML
@@ -280,21 +284,22 @@ public class MapController {
         map.nextPlayer();
     }
     @FXML
-    private Stage stage;
+    private Pane mapWindow;
     private Stage prevStage = null;
-    @FXML
     private void enterTown() {
         System.out.println("Entering Town");
         Pane myPane = null;
         FXMLLoader ldr = new FXMLLoader();
         try {
+            // I have no idea why I can't get this to work
             myPane = ldr.load(getClass().getResource("town.fxml"));
         } catch (Exception e) {
             System.out.println("Exception loading town.fxml");
             return;
         }
         Scene scene = new Scene(myPane);
-        prevStage = stage;
+        prevStage = (Stage) mapWindow.getScene().getWindow();
+        Stage stage = new Stage();
         stage.setScene(scene);
         stage.setOnCloseRequest(a -> {
             Platform.exit();
@@ -303,8 +308,48 @@ public class MapController {
         prevStage.close();
         stage.show();
     }
+
+    @FXML
+    private Pane background;
+    @FXML
+    private TextField pubmsg;
+    @FXML
+    private Pane townWindow;
+    Random rng = new Random();
     private void enterPub() {
         System.out.println("Entering Pub");
+        int round = 1;
+        double time = 10;
+        int bonus = (int)(round * rng.nextDouble() * time);
+        currentPlayer.setBalance(currentPlayer.getBalance() + bonus);
+        pubmsg = new TextField();
+        pubmsg.setText("You earned " + bonus + " dollars from gambling!");
+        Pane myPane = null;
+        FXMLLoader ldr = new FXMLLoader();
+        try {
+            // I have no idea why I can't get this to work
+            myPane = ldr.load(getClass().getResource("pub.fxml"));
+        } catch (Exception e) {
+            System.out.println("Exception loading pub.fxml");
+            return;
+        }
+        Image pub = new Image(getClass().getResource("pubinside.jpg").toExternalForm());
+        ImagePattern img = new ImagePattern(pub);
+        BackgroundFill bgFill = new BackgroundFill(img, new CornerRadii(0), new Insets(0,0,0,0));
+        Background bg = new Background(bgFill);
+        background.setBackground(bg);
+//        outerWindow.setStyle("-fx-background-image: url('" + "pubinside.jpg" + "')");
+
+        Scene scene = new Scene(myPane);
+        prevStage = (Stage) townWindow.getScene().getWindow();
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setOnCloseRequest(a -> {
+            Platform.exit();
+            System.exit(0);
+        });
+        prevStage.close();
+        stage.show();
     }
 
 }
