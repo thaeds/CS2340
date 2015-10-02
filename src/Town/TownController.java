@@ -44,11 +44,15 @@ public class TownController {
                 });
             }
         }
-
+    @FXML
+    private Button enterPub;
     @FXML
     private GridPane buildings;
     @FXML
     public void initialize(){
+        enterPub.setOnMouseClicked(a ->
+        enterPub()
+        );
     }
     private Stage prevStage = null;
     @FXML
@@ -56,6 +60,7 @@ public class TownController {
     Random rng = new Random();
     private void enterPub() {
         System.out.println("Entering Pub");
+        Context.loadPub();
 //        int round = 1;
 //        double time = 10;
 //        int bonus = (int)(round * rng.nextDouble() * time);
