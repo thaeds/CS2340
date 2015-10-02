@@ -20,6 +20,7 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import sample.*;
 import sample.Player;
+import Town.*;
 
 import java.util.*;
 

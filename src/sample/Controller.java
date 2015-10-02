@@ -77,6 +77,7 @@ public class Controller implements Initializable {
         outerWindow.setStyle("-fx-background-image: url('" + "mule.jpg" + "')");
         title.setImage(muleLogo);
     }
+
     @FXML public void nextScreen() {
         numberOfPlayers = players.getSelectionModel().getSelectedIndex() + 1;
         window.getChildren().remove(difficulty);
@@ -100,6 +101,7 @@ public class Controller implements Initializable {
         race.setValue("Packer");
         window.getChildren().add(continueButton);
     }
+
     private void purgePlayerConfig() {
         name.clear();
         window.getChildren().remove(color);
