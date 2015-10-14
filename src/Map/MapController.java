@@ -44,6 +44,8 @@ public class MapController {
             t = new Town();
             t.setOnMouseClicked(a -> {
                 Context.loadTown();
+                Stage curStage = (Stage)mapWindow.getScene().getWindow();
+                curStage.close();
             });
             tiles.add(t, 4, 2);
 
@@ -288,28 +290,6 @@ public class MapController {
     @FXML
     private Pane mapWindow;
     private Stage prevStage = null;
-    private void enterTown() {
-        System.out.println("Entering Town");
-        Pane myPane = null;
-        FXMLLoader ldr = new FXMLLoader();
-        try {
-            // I have no idea why I can't get this to work
-            myPane = ldr.load(getClass().getResource("town.fxml"));
-        } catch (Exception e) {
-            System.out.println("Exception loading town.fxml");
-            return;
-        }
-        Scene scene = new Scene(myPane);
-        prevStage = (Stage) mapWindow.getScene().getWindow();
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setOnCloseRequest(a -> {
-            Platform.exit();
-            System.exit(0);
-        });
-        prevStage.close();
-        stage.show();
-    }
 
     @FXML
     private Pane background;
@@ -318,40 +298,5 @@ public class MapController {
     @FXML
     private Pane townWindow;
     Random rng = new Random();
-    private void enterPub() {
-        System.out.println("Entering Pub");
-        int round = 1;
-        double time = 10;
-        int bonus = (int)(round * rng.nextDouble() * time);
-        currentPlayer.setBalance(currentPlayer.getBalance() + bonus);
-        pubmsg = new TextField();
-        pubmsg.setText("You earned " + bonus + " dollars from gambling!");
-        Pane myPane = null;
-        FXMLLoader ldr = new FXMLLoader();
-        try {
-            // I have no idea why I can't get this to work
-            myPane = ldr.load(getClass().getResource("pub.fxml"));
-        } catch (Exception e) {
-            System.out.println("Exception loading pub.fxml");
-            return;
-        }
-        Image pub = new Image(getClass().getResource("pubinside.jpg").toExternalForm());
-        ImagePattern img = new ImagePattern(pub);
-        BackgroundFill bgFill = new BackgroundFill(img, new CornerRadii(0), new Insets(0,0,0,0));
-        Background bg = new Background(bgFill);
-        background.setBackground(bg);
-//        outerWindow.setStyle("-fx-background-image: url('" + "pubinside.jpg" + "')");
-
-        Scene scene = new Scene(myPane);
-        prevStage = (Stage) townWindow.getScene().getWindow();
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setOnCloseRequest(a -> {
-            Platform.exit();
-            System.exit(0);
-        });
-        prevStage.close();
-        stage.show();
-    }
 
 }
