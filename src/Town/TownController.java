@@ -61,6 +61,8 @@ public class TownController {
     private void enterPub() {
         System.out.println("Entering Pub");
         Context.loadPub();
+        Stage curStage = (Stage)townWindow.getScene().getWindow();
+        curStage.close();
 //        int round = 1;
 //        double time = 10;
 //        int bonus = (int)(round * rng.nextDouble() * time);
