@@ -49,10 +49,17 @@ public class TownController {
     @FXML
     private GridPane buildings;
     @FXML
+    private Button enterStore;
     public void initialize(){
         enterPub.setOnMouseClicked(a ->
         enterPub()
         );
+        enterStore.setOnMouseClicked(a -> {
+            System.out.println("Entering Store");
+            Context.loadStore();
+            Stage curStage = (Stage)townWindow.getScene().getWindow();
+            curStage.close();
+        });
     }
     private Stage prevStage = null;
     @FXML
