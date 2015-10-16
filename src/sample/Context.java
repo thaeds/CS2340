@@ -16,8 +16,15 @@ public class Context {
     private static Player currentPlayer;
     private Stage prevStage;
     public static Scene map;
+    public static int currentRound = 1;
     public static Player getCurrentPlayer() {
-        return currentPlayer;
+        return players.get(0);
+    }
+    public static int getCurrentRound() {
+        return currentRound;
+    }
+    public static int getRemainingTime() {
+        return 140;
     }
     public static void setCurrentPlayer(Player p) {
         System.out.println("Current Player" + p.toString());

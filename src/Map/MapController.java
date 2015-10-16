@@ -250,6 +250,7 @@ public class MapController {
         private class Turn {
             private ArrayList<Player> order;
             int turnCount = 0;
+            int roundCount = 0;
 
             private Turn(ArrayList<Player> p) {
                 order = new ArrayList<>();
@@ -264,7 +265,16 @@ public class MapController {
                     Collections.sort(order);
                 }
                 turnCount++;
+                roundCount = turnCount % players.size() + 1;
                 return order.get(turnCount - 1);
+            }
+
+            public int getCurrentRound() {
+                return roundCount;
+            }
+
+            public int getCurrentTurn() {
+                return turnCount;
             }
         }
     }
@@ -304,5 +314,9 @@ public class MapController {
     @FXML
     private Pane townWindow;
     Random rng = new Random();
+
+    public int getCurrentRound() {
+        return 1;
+    }
 
 }
