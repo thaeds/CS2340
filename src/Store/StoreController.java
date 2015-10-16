@@ -19,11 +19,14 @@ public class StoreController implements Initializable {
     @Override
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-        buyMule.setOnMouseClicked(a ->{
+    }
+
+    @FXML
+    private void buyMule() {
+        System.out.println("CLICKED MULE");
             if(Context.getCurrentPlayer().getBalance() > 100) {
                 Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 100);
                 Context.getCurrentPlayer().setNumMules(Context.getCurrentPlayer().getNumMules() + 1);
-            }
-        });
+    }
     }
 }

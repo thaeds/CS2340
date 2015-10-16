@@ -15,7 +15,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button id="buyMule" mnemonicParsing="false" prefHeight="150.0" prefWidth="324.0" text="Buy Mule: $100" />
+      <Button id="buyMule" onAction="#buyMule" mnemonicParsing="false" prefHeight="150.0" prefWidth="324.0" text="Buy Mule: $100" />
       <Button id="leaveStore" mnemonicParsing="false" prefHeight="143.0" prefWidth="338.0" text="Leave Store" GridPane.columnIndex="1" GridPane.rowIndex="2" />
    </children>
 </GridPane>
