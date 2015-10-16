@@ -33,7 +33,7 @@ public class StoreController implements Initializable {
         System.out.println("Bought Food");
         if(Context.getCurrentPlayer().getBalance() > 30) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 30);
-            Context.getCurrentPlayer().setFood(Context.getCurrentPlayer().getFood());
+            Context.getCurrentPlayer().setFood(Context.getCurrentPlayer().getFood() + 1);
         }
     }
     @FXML
@@ -41,7 +41,7 @@ public class StoreController implements Initializable {
         System.out.println("Bought Energy");
         if(Context.getCurrentPlayer().getBalance() > 25) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 25);
-            Context.getCurrentPlayer().setEnergy(Context.getCurrentPlayer().getEnergy());
+            Context.getCurrentPlayer().setEnergy(Context.getCurrentPlayer().getEnergy() + 1);
         }
     }
     @FXML
@@ -49,7 +49,7 @@ public class StoreController implements Initializable {
         System.out.println("Bought Ore");
         if(Context.getCurrentPlayer().getBalance() > 75) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 75);
-            Context.getCurrentPlayer().setOre(Context.getCurrentPlayer().getOre());
+            Context.getCurrentPlayer().setOre(Context.getCurrentPlayer().getOre() + 1);
         }
     }
     @FXML
@@ -99,7 +99,7 @@ public class StoreController implements Initializable {
 
     @FXML
     private void sellOre() {
-        System.out.println("CLICKED sell energy");
+        System.out.println("CLICKED sell ore");
         if(Context.getCurrentPlayer().getOre() > 1) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() + 50);
             Context.getCurrentPlayer().setOre(Context.getCurrentPlayer().getOre() - 1);
