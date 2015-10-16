@@ -44,9 +44,9 @@ public class Player implements Comparable {
         this.energy = energy;
     }
 
-    int food;
-    int ore;
-    int energy;
+    int food = 8;
+    int ore = 0;
+    int energy = 4;
 
     public Mule getMule() {
         return mule;
