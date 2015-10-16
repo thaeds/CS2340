@@ -29,8 +29,32 @@ public class StoreController implements Initializable {
     }
 
     @FXML
+    private void buyFood() {
+        System.out.println("Bought Food");
+        if(Context.getCurrentPlayer().getBalance() > 30) {
+            Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 30);
+            Context.getCurrentPlayer().setFood(Context.getCurrentPlayer().getFood());
+        }
+    }
+    @FXML
+    private void buyEnergy() {
+        System.out.println("Bought Energy");
+        if(Context.getCurrentPlayer().getBalance() > 25) {
+            Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 25);
+            Context.getCurrentPlayer().setEnergy(Context.getCurrentPlayer().getEnergy());
+        }
+    }
+    @FXML
+    private void buyOre() {
+        System.out.println("Bought Ore");
+        if(Context.getCurrentPlayer().getBalance() > 75) {
+            Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 75);
+            Context.getCurrentPlayer().setOre(Context.getCurrentPlayer().getOre());
+        }
+    }
+    @FXML
     private void buyFoodMule() {
-        System.out.println("CLICKED MULE");
+        System.out.println("Bought Food Mule");
             if(Context.getCurrentPlayer().getBalance() > 125) {
                 Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 125);
                 Context.getCurrentPlayer().setMule(new FoodMule());
@@ -39,7 +63,7 @@ public class StoreController implements Initializable {
 
     @FXML
     private void buyOreMule() {
-        System.out.println("CLICKED MULE");
+        System.out.println("Bought Ore Mule");
         if(Context.getCurrentPlayer().getBalance() > 175) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 175);
             Context.getCurrentPlayer().setMule(new OreMule());
@@ -48,7 +72,7 @@ public class StoreController implements Initializable {
 
     @FXML
     private void buyEnergyMule() {
-        System.out.println("CLICKED MULE");
+        System.out.println("Bought Energy Mule");
         if(Context.getCurrentPlayer().getBalance() > 150) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 150);
             Context.getCurrentPlayer().setMule(new EnergyMule());

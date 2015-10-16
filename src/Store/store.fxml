@@ -24,7 +24,7 @@
       <Button id="buyMule" fx:id="buyFood" mnemonicParsing="false" onAction="#buyFood" prefHeight="150.0" prefWidth="324.0" text="Buy Food: $30" GridPane.rowIndex="1" />
       <Button id="buyMule" fx:id="buyEnergy" mnemonicParsing="false" onAction="#buyEnergy" prefHeight="150.0" prefWidth="324.0" text="Buy Energy: $25" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <Button id="buyMule" fx:id="buyOre" mnemonicParsing="false" onAction="#buyOre" prefHeight="150.0" prefWidth="324.0" text="Buy Ore: $50" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <Button id="buyMule" fx:id="sellFood" mnemonicParsing="false" onAction="#buyFood" prefHeight="150.0" prefWidth="324.0" text="Sell Food: $30" GridPane.rowIndex="2" />
+      <Button id="buyMule" fx:id="sellFood" mnemonicParsing="false" onAction="#sellFood" prefHeight="150.0" prefWidth="324.0" text="Sell Food: $30" GridPane.rowIndex="2" />
       <Button id="buyMule" fx:id="sellEnergy" mnemonicParsing="false" onAction="#sellEnergy" prefHeight="150.0" prefWidth="324.0" text="Sell Energy: $25" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Button id="buyMule" fx:id="sellOre" mnemonicParsing="false" onAction="#sellOre" prefHeight="150.0" prefWidth="324.0" text="Sell Ore: $50" GridPane.columnIndex="2" GridPane.rowIndex="2" />
    </children>
