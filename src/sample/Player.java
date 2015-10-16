@@ -103,7 +103,7 @@ public class Player implements Comparable {
         this.name = name;
         this.race = race;
         this.color = color;
-        this.balance = 300;
+        this.balance = 10000;
     }
 
     @Override
