@@ -6,13 +6,14 @@ import sample.Player;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 
+
 /**
  * Created by Sergey on 9/24/15.
  */
 public class Turn /**implements Runnable*/{
-
-private ArrayDeque<Player> players;
-private int currentTurn = 0;
+    private ArrayDeque<Player> players;
+    private int currentTurn = 0;
+    private int currentRound = 0;
 
     public Turn(ArrayList<Player> p ) {
         players = new ArrayDeque<>();
@@ -30,6 +31,10 @@ private int currentTurn = 0;
 
     public int getCurrentTurn() {
         return currentTurn;
+    }
+
+    public Player getCurrentPlayer() {
+        return players.peekLast();
     }
 
     /**@Override
