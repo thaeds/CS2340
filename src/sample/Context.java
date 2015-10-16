@@ -58,7 +58,7 @@ public class Context {
             Scene q = new Scene(root, 580, 400);
             primaryStage.setScene(q);
             primaryStage.show();
-//            s.close();
+//          s.close();
         } catch (Exception e) {
             System.out.println("Can't load pub");
             return;

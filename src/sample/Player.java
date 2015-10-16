@@ -95,4 +95,13 @@ public class Player implements Comparable {
         Player p = (Player) o;
         return this.getScore() - p.getScore();
     }
+    public int calculateProduction() {
+        int prod = 0;
+        for(Tile t : tiles) {
+            if (t.hasMule() && t.getEnergyPoints() > 0) {
+                prod += t.getOrePoints();
+            }
+        }
+        return prod;
+    }
 }
