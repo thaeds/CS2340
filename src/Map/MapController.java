@@ -182,10 +182,9 @@ public class MapController {
                             buyTile(p, t, s);
                             nextPlayer();
                             if(a.getClickCount() > 1 && t.getOwner() != null) {
-                                if (t.getOwner().getNumMules() > 0) {
-                                    t.setMule(true);
-                                    t.getOwner().setNumMules(t.getOwner().getNumMules() - 1);
-                                }
+//                                if (t.getOwner().getNumMules() > 0) {
+//                                    t.setMule(true);
+//                                    t.getOwner().setNumMules(t.getOwner().getNumMules() - 1);
                             }
                         });
                     }

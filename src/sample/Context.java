@@ -15,12 +15,28 @@ public class Context {
     private static ArrayList<Player> players;
     private static Player currentPlayer;
     private Stage prevStage;
+    public static Scene map;
     public static Player getCurrentPlayer() {
         return currentPlayer;
     }
     public static void setCurrentPlayer(Player p) {
         System.out.println("Current Player" + p.toString());
         currentPlayer = p;
+    }
+    public static void loadMap() {
+        FXMLLoader ldr = null;
+        Parent root;
+        System.out.println("loading map");
+        try {
+            ldr = new FXMLLoader(Context.class.getResource("../Map/map.fxml"));
+            root = (Parent) ldr.load();
+            Stage primaryStage = new Stage();
+            Scene q = new Scene(root, 580, 400);
+            primaryStage.setScene(q);
+            primaryStage.show();
+        } catch(Exception e) {
+            System.out.println("Exception caught");
+        }
     }
     public static void loadTown() {
         FXMLLoader ldr = null;

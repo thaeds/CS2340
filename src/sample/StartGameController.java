@@ -33,6 +33,7 @@ public class StartGameController implements Initializable {
         myPane = FXMLLoader.load(getClass().getResource("../Map/map.fxml"));
         Scene scene = new Scene(myPane);
         stage.setScene(scene);
+        Context.map = scene;
 
         prevStage.close();
 
