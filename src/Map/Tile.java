@@ -82,4 +82,7 @@ public class Tile extends ImageView {
     public boolean hasMule() {
         return hasMule;
     }
+    public void setMule(boolean b) {
+        hasMule = b;
+    }
 }

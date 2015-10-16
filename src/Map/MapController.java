@@ -13,6 +13,7 @@ import javafx.scene.effect.BlurType;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Shadow;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -180,6 +181,12 @@ public class MapController {
                             Tile t = (Tile) n;
                             buyTile(p, t, s);
                             nextPlayer();
+                            if(a.getClickCount() > 1 && t.getOwner() != null) {
+                                if (t.getOwner().getNumMules() > 0) {
+                                    t.setMule(true);
+                                    t.getOwner().setNumMules(t.getOwner().getNumMules() - 1);
+                                }
+                            }
                         });
                     }
                 } else {

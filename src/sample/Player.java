@@ -16,9 +16,28 @@ import java.util.Objects;
  */
 public class Player implements Comparable {
 
-        String name;
-        String race;
-        Color color;
+    String name;
+    String race;
+    Color color;
+    int currentEnergy = 0;
+
+    public int getNumMules() {
+        return numMules;
+    }
+
+    public void setNumMules(int numMules) {
+        this.numMules = numMules;
+    }
+
+    int numMules = 0;
+
+    public int getCurrentEnergy() {
+        return currentEnergy;
+    }
+
+    public void setCurrentEnergy(int currentEnergy) {
+        this.currentEnergy = currentEnergy;
+    }
 
     ArrayList<Tile> tiles = new ArrayList<>();
 
@@ -69,7 +88,7 @@ public class Player implements Comparable {
     }
 
     public int getScore() {
-        if(getNumberOfTiles() == 0) {
+        if (getNumberOfTiles() == 0) {
             return 0;
         } else {
             int i = 0;
@@ -85,21 +104,25 @@ public class Player implements Comparable {
         this.race = race;
         this.color = color;
         this.balance = 300;
-        }
+    }
+
     @Override
     public String toString() {
         return "Name: " + name + "Balance: " + balance + "\n| Race: " + race;
     }
+
     @Override
     public int compareTo(Object o) {
         Player p = (Player) o;
         return this.getScore() - p.getScore();
     }
+
     public int calculateProduction() {
         int prod = 0;
-        for(Tile t : tiles) {
-            if (t.hasMule() && t.getEnergyPoints() > 0) {
+        for (Tile t : tiles) {
+            if (t.hasMule() && currentEnergy > 0) {
                 prod += t.getOrePoints();
+                currentEnergy = currentEnergy - 1;
             }
         }
         return prod;
