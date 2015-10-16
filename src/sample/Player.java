@@ -19,17 +19,17 @@ public class Player implements Comparable {
     String name;
     String race;
     Color color;
+
+    public Mule getMule() {
+        return mule;
+    }
+
+    public void setMule(Mule m) {
+        this.mule = m;
+    }
+
+    Mule mule;
     int currentEnergy = 0;
-
-    public int getNumMules() {
-        return numMules;
-    }
-
-    public void setNumMules(int numMules) {
-        this.numMules = numMules;
-    }
-
-    int numMules = 0;
 
     public int getCurrentEnergy() {
         return currentEnergy;

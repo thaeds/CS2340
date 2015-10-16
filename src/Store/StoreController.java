@@ -1,5 +1,8 @@
 package Store;
 
+import Map.EnergyMule;
+import Map.FoodMule;
+import Map.OreMule;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -26,12 +29,30 @@ public class StoreController implements Initializable {
     }
 
     @FXML
-    private void buyMule() {
+    private void buyFoodMule() {
         System.out.println("CLICKED MULE");
-            if(Context.getCurrentPlayer().getBalance() > 100) {
-                Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 100);
-                Context.getCurrentPlayer().setNumMules(Context.getCurrentPlayer().getNumMules() + 1);
+            if(Context.getCurrentPlayer().getBalance() > 125) {
+                Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 125);
+                Context.getCurrentPlayer().setMule(new FoodMule());
+        }
     }
+
+    @FXML
+    private void buyOreMule() {
+        System.out.println("CLICKED MULE");
+        if(Context.getCurrentPlayer().getBalance() > 175) {
+            Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 175);
+            Context.getCurrentPlayer().setMule(new OreMule());
+        }
+    }
+
+    @FXML
+    private void buyEnergyMule() {
+        System.out.println("CLICKED MULE");
+        if(Context.getCurrentPlayer().getBalance() > 150) {
+            Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 150);
+            Context.getCurrentPlayer().setMule(new EnergyMule());
+        }
     }
 
     @FXML
