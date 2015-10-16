@@ -30,80 +30,79 @@ public class StoreController implements Initializable {
 
     @FXML
     private void buyFood() {
-        if(Context.getCurrentPlayer().getBalance() >= 30) {
+        System.out.println("Bought Food");
+        if(Context.getCurrentPlayer().getBalance() > 30) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 30);
-            Context.getCurrentPlayer().setFood(Context.getCurrentPlayer().getFood() + 1);
-            System.out.println("Bought Food, Currently you have " + Context.getCurrentPlayer().getFood());
+            Context.getCurrentPlayer().setFood(Context.getCurrentPlayer().getFood());
         }
     }
     @FXML
     private void buyEnergy() {
-        if(Context.getCurrentPlayer().getBalance() >= 25) {
+        System.out.println("Bought Energy");
+        if(Context.getCurrentPlayer().getBalance() > 25) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 25);
-            Context.getCurrentPlayer().setEnergy(Context.getCurrentPlayer().getEnergy() + 1);
-            System.out.println("Bought Energy, Currently you have " + Context.getCurrentPlayer().getEnergy());
+            Context.getCurrentPlayer().setEnergy(Context.getCurrentPlayer().getEnergy());
         }
     }
     @FXML
     private void buyOre() {
-        if(Context.getCurrentPlayer().getBalance() >= 50) {
-            Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 50);
-            Context.getCurrentPlayer().setOre(Context.getCurrentPlayer().getOre() + 1);
-            System.out.println("Bought Ore, Currently you have " + Context.getCurrentPlayer().getOre());
+        System.out.println("Bought Ore");
+        if(Context.getCurrentPlayer().getBalance() > 75) {
+            Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 75);
+            Context.getCurrentPlayer().setOre(Context.getCurrentPlayer().getOre());
         }
     }
     @FXML
     private void buyFoodMule() {
-            if(Context.getCurrentPlayer().getBalance() >= 125) {
+        System.out.println("Bought Food Mule");
+            if(Context.getCurrentPlayer().getBalance() > 125) {
                 Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 125);
                 Context.getCurrentPlayer().setMule(new FoodMule());
-                System.out.println("Bought Food Mule");
         }
     }
 
     @FXML
     private void buyOreMule() {
-        if(Context.getCurrentPlayer().getBalance() >= 175) {
+        System.out.println("Bought Ore Mule");
+        if(Context.getCurrentPlayer().getBalance() > 175) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 175);
             Context.getCurrentPlayer().setMule(new OreMule());
-            System.out.println("Bought Ore Mule");
         }
     }
 
     @FXML
     private void buyEnergyMule() {
-        if(Context.getCurrentPlayer().getBalance() >= 150) {
+        System.out.println("Bought Energy Mule");
+        if(Context.getCurrentPlayer().getBalance() > 150) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 150);
             Context.getCurrentPlayer().setMule(new EnergyMule());
-            System.out.println("Bought Energy Mule");
         }
     }
 
     @FXML
     private void sellFood() {
         System.out.println("CLICKED sell food");
-        if(Context.getCurrentPlayer().getFood() > 0) {
+        if(Context.getCurrentPlayer().getFood() > 1) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() + 30);
             Context.getCurrentPlayer().setFood(Context.getCurrentPlayer().getFood() - 1);
-            System.out.println("Sold Food, Currently you have " + Context.getCurrentPlayer().getFood());
         }
     }
 
     @FXML
     private void sellEnergy() {
-        if(Context.getCurrentPlayer().getEnergy() > 0) {
+        System.out.println("CLICKED sell energy");
+        if(Context.getCurrentPlayer().getEnergy() > 1) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() + 25);
             Context.getCurrentPlayer().setEnergy(Context.getCurrentPlayer().getEnergy() - 1);
-            System.out.println("Sold Energy, Currently you have " + Context.getCurrentPlayer().getEnergy());
         }
     }
 
     @FXML
     private void sellOre() {
-        if(Context.getCurrentPlayer().getOre() > 0) {
+        System.out.println("CLICKED sell energy");
+        if(Context.getCurrentPlayer().getOre() > 1) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() + 50);
             Context.getCurrentPlayer().setOre(Context.getCurrentPlayer().getOre() - 1);
-            System.out.println("Sold Ore, Currently you have " + Context.getCurrentPlayer().getOre());
         }
     }
 

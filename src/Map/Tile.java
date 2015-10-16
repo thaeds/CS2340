@@ -13,8 +13,8 @@ public class Tile extends ImageView {
     private int FoodPoints;
     private int EnergyPoints;
     private int OrePoints;
-    private boolean hasMule;
     private Player owner;
+    private Mule mule;
 
     public boolean isOwned() {
         return isOwned;
@@ -26,7 +26,6 @@ public class Tile extends ImageView {
         this.setOrePoints(1);
         this.setCost(100);
         isOwned = false;
-        hasMule = false;
         owner = null;
         this.setImage(new Image(getClass().getResource("plain.png").toExternalForm()));
     }
@@ -80,9 +79,14 @@ public class Tile extends ImageView {
         owner = owner;
     }
     public boolean hasMule() {
-        return hasMule;
+        return mule != null;
     }
-    public void setMule(boolean b) {
-        hasMule = b;
+
+    public Mule getMule() {
+        return mule;
+    }
+
+    public void setMule(Mule mule) {
+        this.mule = mule;
     }
 }
