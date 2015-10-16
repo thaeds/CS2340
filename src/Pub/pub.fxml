@@ -12,7 +12,7 @@
          <image>
             <Image url="@pubinside.jpg" />
          </image></ImageView>
-      <Text layoutX="223.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the pub!" />
+      <Text fx:id="pubMessage" layoutX="223.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the pub!" />
       <Button fx:id="exitPub" layoutX="409.0" layoutY="317.0" mnemonicParsing="false" onAction="#exitPub" text="Exit" />
    </children>
 </Pane>
