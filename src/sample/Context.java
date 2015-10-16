@@ -80,6 +80,27 @@ public class Context {
             return;
         }
     }
+    public static void loadStore() {
+        FXMLLoader ldr = null;
+        Parent root;
+        //Controller control = loader.getController();
+        //control.setPrevStage(primaryStage);
+        Pane myPane = null;
+        try {
+            ldr = new FXMLLoader(Context.class.getResource("../Store/store.fxml"));
+            root = (Parent) ldr.load();
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("M.U.L.E.");
+            primaryStage.setResizable(false);
+            Scene q = new Scene(root, 580, 400);
+            primaryStage.setScene(q);
+            primaryStage.show();
+//          s.close();
+        } catch (Exception e) {
+            System.out.println("Can't load Store");
+            return;
+        }
+    }
     public static void setPlayers(ArrayList<Player> p) {
         players = p;
     }
