@@ -17,8 +17,6 @@ public class Pub {
     @FXML
     private ImageView v = new ImageView();
     @FXML
-    private Button exitPub;
-    @FXML
     public void initialize() {
     }
     @FXML
