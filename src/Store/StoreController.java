@@ -56,6 +56,33 @@ public class StoreController implements Initializable {
     }
 
     @FXML
+    private void sellFood() {
+        System.out.println("CLICKED sell food");
+        if(Context.getCurrentPlayer().getFood() > 1) {
+            Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() + 30);
+            Context.getCurrentPlayer().setFood(Context.getCurrentPlayer().getFood() - 1);
+        }
+    }
+
+    @FXML
+    private void sellEnergy() {
+        System.out.println("CLICKED sell energy");
+        if(Context.getCurrentPlayer().getEnergy() > 1) {
+            Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() + 25);
+            Context.getCurrentPlayer().setEnergy(Context.getCurrentPlayer().getEnergy() - 1);
+        }
+    }
+
+    @FXML
+    private void sellOre() {
+        System.out.println("CLICKED sell energy");
+        if(Context.getCurrentPlayer().getOre() > 1) {
+            Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() + 50);
+            Context.getCurrentPlayer().setOre(Context.getCurrentPlayer().getOre() - 1);
+        }
+    }
+
+    @FXML
     private void leaveStore() {
         System.out.println("clicked on exit pub");
         Context.loadMap();
