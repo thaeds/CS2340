@@ -20,6 +20,34 @@ public class Player implements Comparable {
     String race;
     Color color;
 
+    public int getFood() {
+        return food;
+    }
+
+    public void setFood(int food) {
+        this.food = food;
+    }
+
+    public int getOre() {
+        return ore;
+    }
+
+    public void setOre(int ore) {
+        this.ore = ore;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
+
+    int food;
+    int ore;
+    int energy;
+
     public Mule getMule() {
         return mule;
     }
