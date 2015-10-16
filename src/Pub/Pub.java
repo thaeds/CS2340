@@ -3,6 +3,7 @@ package Pub;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
 
 /**
  * Created by Sergey on 10/2/15.

@@ -13,5 +13,6 @@
             <Image url="@pubinside.jpg" />
          </image></ImageView>
       <Text layoutX="223.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the pub!" />
+      <Button fx:id="exitPug" layoutX="471.0" layoutY="332.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="129.0" text="Exit" />
    </children>
 </Pane>
