@@ -152,6 +152,9 @@ public class MapController {
             ca.setBrightness(.5);
             for (Node n : tiles.getChildren()) {
                 n.setOnMouseEntered(a -> {
+                    if(a.getClickCount() == 2) {
+                        System.out.println("DOUBLE CLICK DETECTED");
+                    }
                     Shadow s = new Shadow();
                     if (n.getEffect() != null && n.getEffect().getClass().equals(s.getClass())) {
                     }else {
@@ -159,6 +162,9 @@ public class MapController {
                     }
                 });
                 n.setOnMouseExited(a -> {
+                    if(a.getClickCount() == 2) {
+                        System.out.println("DOUBLE CLICK DETECTED");
+                    }
                     if (n.getEffect().equals(ca)) {
                         n.setEffect(null);
                     }
@@ -181,13 +187,16 @@ public class MapController {
                             Tile t = (Tile) n;
                             buyTile(p, t, s);
                             nextPlayer();
-                            if(a.getClickCount() > 1 && t.getOwner() != null) {
-
+                            if(a.getClickCount() == 2) {
+                                System.out.println("DOUBLE CLICK DETECTED");
                             }
                         });
                     }
                 } else {
                     n.setOnMouseClicked(a -> {
+                        if(a.getClickCount() == 2) {
+                            System.out.println("DOUBLE CLICK DETECTED");
+                        }
                         Tile t = (Tile)n;
                         if (t.getOwner() != null) {
                             messageBox.setText("This property is already owned by another player!");
