@@ -211,9 +211,6 @@ public class MapController {
             turn.addAll(p);
             nextPlayer();
         }
-        private Tile getTileFromRepresentation(Node v) {
-            return tileImages.get(v);
-        }
         private void nextPlayer(){
             for (int i = 0; i < players.size(); i++) {
                 if (players.get(i).getNumberOfTiles() >= 2) {
