@@ -10,6 +10,8 @@ import java.util.ArrayList;
 /**
  * Created by Sergey on 9/24/15.
  */
+
+//Hi my name is Joseph
 public class Turn /**implements Runnable*/{
     private ArrayDeque<Player> players;
     private int currentTurn = 0;
