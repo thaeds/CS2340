@@ -153,7 +153,7 @@ public class MapController {
             for (Node n : tiles.getChildren()) {
                 n.setOnMouseEntered(a -> {
                     if(a.getClickCount() == 2) {
-                        System.out.println("DOUBLE CLICK DETECTED");
+                        System.out.println("Mule Placed");
                     }
                     Shadow s = new Shadow();
                     if (n.getEffect() != null && n.getEffect().getClass().equals(s.getClass())) {
@@ -163,7 +163,7 @@ public class MapController {
                 });
                 n.setOnMouseExited(a -> {
                     if(a.getClickCount() == 2) {
-                        System.out.println("DOUBLE CLICK DETECTED");
+                        System.out.println("Mule Placed");
                     }
                     if (n.getEffect().equals(ca)) {
                         n.setEffect(null);
@@ -188,14 +188,14 @@ public class MapController {
                             buyTile(p, t, s);
                             nextPlayer();
                             if(a.getClickCount() == 2) {
-                                System.out.println("DOUBLE CLICK DETECTED");
+                                System.out.println("Mule Placed");
                             }
                         });
                     }
                 } else {
                     n.setOnMouseClicked(a -> {
                         if(a.getClickCount() == 2) {
-                            System.out.println("DOUBLE CLICK DETECTED");
+                            System.out.println("Mule Placed");
                         }
                         Tile t = (Tile)n;
                         if (t.getOwner() != null) {

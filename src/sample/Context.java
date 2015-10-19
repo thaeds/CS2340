@@ -6,12 +6,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Sergey on 9/25/15.
  */
-public class Context {
+public class Context implements Serializable{
     private static ArrayList<Player> players;
     private static Player currentPlayer;
     private Stage prevStage;
