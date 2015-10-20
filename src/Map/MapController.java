@@ -33,6 +33,7 @@ public class MapController {
         private ArrayDeque<Player> turn = new ArrayDeque<>();
         Turn ordering;
         public void run() {
+            Context.getCurrentPlayer().production();
             nextPlayer();
         }
         public MapStuff() {
@@ -153,7 +154,12 @@ public class MapController {
             for (Node n : tiles.getChildren()) {
                 n.setOnMouseEntered(a -> {
                     if(a.getClickCount() == 2) {
-                        System.out.println("Mule Placed");
+                        System.out.println("Current Owner: " + t.getOwner());
+                        if(Context.getCurrentPlayer().getMule() != null &&
+                                t.getOwner() == Context.getCurrentPlayer()) {
+                            t.setMule(Context.getCurrentPlayer().getMule());
+                            System.out.println("Mule Placed");
+                        }
                     }
                     Shadow s = new Shadow();
                     if (n.getEffect() != null && n.getEffect().getClass().equals(s.getClass())) {
@@ -163,7 +169,12 @@ public class MapController {
                 });
                 n.setOnMouseExited(a -> {
                     if(a.getClickCount() == 2) {
-                        System.out.println("Mule Placed");
+                        System.out.println("Current Owner: " + t.getOwner());
+                        if(Context.getCurrentPlayer().getMule() != null &&
+                                t.getOwner() == Context.getCurrentPlayer()) {
+                            t.setMule(Context.getCurrentPlayer().getMule());
+                            System.out.println("Mule Placed");
+                        }
                     }
                     if (n.getEffect().equals(ca)) {
                         n.setEffect(null);
@@ -186,16 +197,27 @@ public class MapController {
                         n.setOnMouseClicked(a -> {
                             Tile t = (Tile) n;
                             buyTile(p, t, s);
+                            t.setOwner(Context.getCurrentPlayer());
                             nextPlayer();
                             if(a.getClickCount() == 2) {
-                                System.out.println("Mule Placed");
+                                System.out.println("Current Owner: " + t.getOwner());
+                                if(Context.getCurrentPlayer().getMule() != null &&
+                                        t.getOwner() == Context.getCurrentPlayer()) {
+                                    t.setMule(Context.getCurrentPlayer().getMule());
+                                    System.out.println("Mule Placed");
+                                }
                             }
                         });
                     }
                 } else {
                     n.setOnMouseClicked(a -> {
                         if(a.getClickCount() == 2) {
-                            System.out.println("Mule Placed");
+                            System.out.println("Current Owner: " + t.getOwner());
+                            if(Context.getCurrentPlayer().getMule() != null &&
+                                    t.getOwner() == Context.getCurrentPlayer()) {
+                                t.setMule(Context.getCurrentPlayer().getMule());
+                                System.out.println("Mule Placed");
+                            }
                         }
                         Tile t = (Tile)n;
                         if (t.getOwner() != null) {
