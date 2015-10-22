@@ -145,14 +145,31 @@ public class Player implements Comparable {
         return p.getScore() - this.getScore();
     }
 
-    public int calculateProduction() {
-        int prod = 0;
+    public void production() {
         for (Tile t : tiles) {
-            if (t.hasMule() && currentEnergy > 0) {
-                prod += t.getOrePoints();
-                currentEnergy = currentEnergy - 1;
+            if(t.hasMule()) {
+                if (t.getMule().getClass() == Map.OreMule.class) {
+                    if (t.getClass() != Map.Mountain.class) continue;
+                    if (this.getEnergy() < 1) continue;
+                    this.setFood(this.getFood() + 1);
+                    this.setOre(this.getOre() + 2);
+                } else if (t.getMule().getClass() == Map.FoodMule.class) {
+                    if (t.getClass() != Map.River.class) continue;
+                    if (this.getEnergy() < 1) continue;
+                    this.setFood(this.getFood() + 4);
+                    this.setEnergy(this.getOre() + 1);
+                } else if (t.getMule().getClass() == Map.EnergyMule.class) {
+                    if (t.getClass() != Map.Tile.class) continue;
+                    if (this.getEnergy() < 1) continue;
+                    this.setFood(this.getFood() + 2);
+                    this.setEnergy(this.getEnergy() + 2);
+                    this.setEnergy(this.getOre() + 1);
+                }
             }
         }
-        return prod;
+        System.out.println("Your resources were set to:");
+        System.out.println("Food: " + this.getFood());
+        System.out.println("Energy: " + this.getEnergy());
+        System.out.println("Ore: " + this.getOre());
     }
 }
