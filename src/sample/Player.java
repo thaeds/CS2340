@@ -142,7 +142,7 @@ public class Player implements Comparable {
     @Override
     public int compareTo(Object o) {
         Player p = (Player) o;
-        return this.getScore() - p.getScore();
+        return p.getScore() - this.getScore();
     }
 
     public int calculateProduction() {

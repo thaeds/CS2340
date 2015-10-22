@@ -5,51 +5,32 @@ import sample.Player;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 
 /**
  * Created by Sergey on 9/24/15.
  */
 
-//Hi my name is Joseph
-public class Turn /**implements Runnable*/{
-    private ArrayDeque<Player> players;
-    private int currentTurn = 0;
-    private int currentRound = 0;
+public class Turn {
+    private PriorityQueue<Player> players;
+    private ArrayList<Player> passedPlayers = new ArrayList<>();
 
-    public Turn(ArrayList<Player> p ) {
-        players = new ArrayDeque<>();
-        System.out.print(Context.getPlayers());
+    public Turn() {
+        players = new PriorityQueue<>();
         players.addAll(Context.getPlayers());
     }
 
     public Player nextTurn() {
-        Player p = players.poll();
-        players.add(p);
-        currentTurn++;
-        Context.setCurrentPlayer(p);
-        return p;
-    }
-
-    public int getCurrentTurn() {
-        return currentTurn;
-    }
-
-    public Player getCurrentPlayer() {
-        return players.peekLast();
-    }
-
-    /**@Override
-    public void run(){
-        System.out.println("Turn thread is running");
-        while(true) {
-            try {
-                System.out.println("Turn thread is running");
-                nextTurn();
-                Thread.sleep(50000);
-            } catch (Exception e) {
-                System.out.println("Unknown exception!");
-            }
+        if (players.peek() == null) {
+            players.addAll(passedPlayers);
+            return nextTurn();
+        } else {
+            Player current = players.poll();
+            passedPlayers.add(current);
+            Context.setCurrentPlayer(current);
+            return current;
         }
-    }*/
+    }
+
 }
