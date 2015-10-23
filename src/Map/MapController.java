@@ -237,9 +237,7 @@ public class MapController {
             }
         }
         public void setPlayers(ArrayList<Player> p) {
-            players.addAll(p);
             ordering = new Turn();
-            //turn.addAll(p);
             nextPlayer();
         }
         private void nextPlayer(){
