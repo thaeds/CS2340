@@ -354,6 +354,14 @@ public class MapController {
         return 1;
     }
 
+    //List of random events and their detailed implementation
+    String RANDOM_EVENT1 = "1. YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS";
+    String RANDOM_EVENT2 = "2. A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.";
+    String RANDOM_EVENT3 = "3. THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $ 8*m.";
+    String RANDOM_EVENT4 = "4. YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $2*m.";
+    String RANDOM_EVENT5 = "5. FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $4*m.";
+    String RANDOM_EVENT6 = "6. MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
+    String RANDOM_EVENT7 = "7. YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $6*m TO CLEAN IT UP.";
     protected int RANDOM_EVENT_CHANCE = 27;
     public void randomEvents() {
         int m; //Factor m
@@ -368,17 +376,37 @@ public class MapController {
         }
         System.out.println("M factor is " + m); //debugging + warning crap
 
-        /*
-        list of random event needs to happen
-        1. YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS
-        2. A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.
-        3. THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $ 8*m.
-        4. YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $2*m.
-        5. FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $4*m.
-        6. MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.
-        7. YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $6*m TO CLEAN IT UP.
-        why can't I push without chaning got dammit
-         */
-    }
+        int event_selector = 1 + (int)(Math.random() * ((7 - 1) + 1));
+        String event = "";
+        switch (event_selector) { // need to implement aftermath of random event **TODO
+            case 1:
+                event = RANDOM_EVENT1;
+                break;
+            case 2:
+                event = RANDOM_EVENT2;
+                break;
+            case 3:
+                event = RANDOM_EVENT3;
+                break;
+            case 4:
+                event = RANDOM_EVENT4;
+                break;
+            case 5:
+                event = RANDOM_EVENT5;
+                break;
+            case 6:
+                event = RANDOM_EVENT6;
+                break;
+            case 7:
+                event = RANDOM_EVENT7;
+                break;
+            default:
+                event = "No random event occured. For moment peace continues.";
+                break;
+        }
 
-}
+
+    } //END OF randomEvents()
+
+} //END OF MapController class
+
