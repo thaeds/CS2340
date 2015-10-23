@@ -333,48 +333,54 @@ public class MapController {
     protected int RANDOM_EVENT_CHANCE = 27;
     public void randomEvents() {
         int m; //Factor m
-        if (getCurrentRound() <= 3) { // Round 1 to 3
-            m = 25;
-        } else if (getCurrentRound() <= 7) { // Round 4 to 7
-            m = 50;
-        } else if (getCurrentRound() <= 11) { // Round 8 to 11
-            m = 75;
-        } else { // Final Round 12
-            m = 100;
+        if (!currentPlayer.isLowest()) { // player is NOT a lowest
+            if (getCurrentRound() <= 3) { // Round 1 to 3
+                m = 25;
+            } else if (getCurrentRound() <= 7) { // Round 4 to 7
+                m = 50;
+            } else if (getCurrentRound() <= 11) { // Round 8 to 11
+                m = 75;
+            } else { // Final Round 12
+                m = 100;
+            }
+            System.out.println("M factor is " + m); //debugging + warning crap
+
+            if ((1 + (int) (Math.random() * ((27 - 1) + 1))) > 26) { //random even DID happen by chance
+                int event_selector = 1 + (int) (Math.random() * ((7 - 1) + 1));
+                String event = "";
+                switch (event_selector) { // need to implement aftermath of random event **TODO
+                    case 1:
+                        event = RANDOM_EVENT1;
+                        break;
+                    case 2:
+                        event = RANDOM_EVENT2;
+                        break;
+                    case 3:
+                        event = RANDOM_EVENT3;
+                        break;
+                    case 4:
+                        event = RANDOM_EVENT4;
+                        break;
+                    case 5:
+                        event = RANDOM_EVENT5;
+                        break;
+                    case 6:
+                        event = RANDOM_EVENT6;
+                        break;
+                    case 7:
+                        event = RANDOM_EVENT7;
+                        break;
+                    default:
+                        event = "this should not happen";
+                        break;
+                }
+            } else { // random event DID NOT happen by chance
+                System.out.println("No random event occured. For moment peace continues.");
+            }
+        } else { // random event DOES NOT OCCUR because this player sucks/lowest
+            System.out.println("God brings mercy on the poorest thus no random event");
         }
-        System.out.println("M factor is " + m); //debugging + warning crap
-
-        int event_selector = 1 + (int)(Math.random() * ((7 - 1) + 1));
-        String event = "";
-        switch (event_selector) { // need to implement aftermath of random event **TODO
-            case 1:
-                event = RANDOM_EVENT1;
-                break;
-            case 2:
-                event = RANDOM_EVENT2;
-                break;
-            case 3:
-                event = RANDOM_EVENT3;
-                break;
-            case 4:
-                event = RANDOM_EVENT4;
-                break;
-            case 5:
-                event = RANDOM_EVENT5;
-                break;
-            case 6:
-                event = RANDOM_EVENT6;
-                break;
-            case 7:
-                event = RANDOM_EVENT7;
-                break;
-            default:
-                event = "No random event occured. For moment peace continues.";
-                break;
-        }
-
-
-    } //END OF randomEvents()
+    }//END OF randomEvents()
 
 } //END OF MapController class
 
