@@ -32,16 +32,25 @@ public class MapController {
     private class MapStuff extends TimerTask {
         private ArrayDeque<Player> turn = new ArrayDeque<>();
         Turn ordering;
+
+        /**
+         * Player's resources (Food/Energy/Ore) is calculated according to the map setting or town type
+         * SOP is printed for user to view the current stat
+         * Move onto next player when current is finished
+         */
         public void run() {
             Context.getCurrentPlayer().production();
             nextPlayer();
         }
+
+
         public MapStuff() {
             setPlayers(Context.getPlayers());
             System.out.println("I am initialing!");
             startMap1();
             setMouseOver();
         }
+
         private void startMap1() {
             t = new Town();
             t.setOnMouseClicked(a -> {
@@ -192,7 +201,7 @@ public class MapController {
                     s.setRadius(50);
                     s.setWidth(0);
                     s.setHeight(0);
-                    if(n.getClass().getName() == "Map.Town") {
+                    if(n.getClass().getName().equals("Map.Town")) {
                     } else {
                         n.setOnMouseClicked(a -> {
                             Tile t = (Tile) n;
@@ -343,6 +352,32 @@ public class MapController {
 
     public int getCurrentRound() {
         return 1;
+    }
+
+    protected int RANDOM_EVENT_CHANCE = 27;
+    public void randomEvents() {
+        int m; //Factor m
+        if (getCurrentRound() <= 3) { // Round 1 to 3
+            m = 25;
+        } else if (getCurrentRound() <= 7) { // Round 4 to 7
+            m = 50;
+        } else if (getCurrentRound() <= 11) { // Round 8 to 11
+            m = 75;
+        } else { // Final Round 12
+            m = 100;
+        }
+        System.out.println("M factor is " + m); //debugging + warning crap
+
+        /*
+        list of random event needs to happen
+        1. YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS
+        2. A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.
+        3. THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $ 8*m.
+        4. YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $2*m.
+        5. FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $4*m.
+        6. MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.
+        7. YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $6*m TO CLEAN IT UP.
+         */
     }
 
 }
