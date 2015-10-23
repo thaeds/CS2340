@@ -30,7 +30,7 @@ import java.util.*;
 public class MapController {
     Town t;
     private class MapStuff extends TimerTask {
-        private ArrayDeque<Player> turn = new ArrayDeque<>();
+        //private ArrayDeque<Player> turn = new ArrayDeque<>();
         Turn ordering;
         public void run() {
             Context.getCurrentPlayer().production();
@@ -229,8 +229,8 @@ public class MapController {
         }
         public void setPlayers(ArrayList<Player> p) {
             players.addAll(p);
-            //ordering = new Turn(players);
-            turn.addAll(p);
+            ordering = new Turn();
+            //turn.addAll(p);
             nextPlayer();
         }
         private void nextPlayer(){
@@ -244,7 +244,7 @@ public class MapController {
             if (selectionPhaseOver) {
                 messageBox.setText("Selection Phase is over! Begging Game!");
             }
-            currentPlayer = turn.poll();
+            currentPlayer = ordering.nextTurn();
 
             System.out.println("Ordering player: " + currentPlayer);
             if(currentPlayer == null) {
@@ -253,7 +253,7 @@ public class MapController {
             playerInfo.setText(currentPlayer.toString() + "| Number of tiles: " + currentPlayer.getTiles().size());
             playerInfo.setBackground(new Background(new BackgroundFill(currentPlayer.getColor(), CornerRadii.EMPTY, Insets.EMPTY)));
             System.out.println("Current Player: " + currentPlayer);
-            turn.add(currentPlayer);
+            //turn.add(currentPlayer);
             setTileOwner(currentPlayer);
         }
 
@@ -271,36 +271,6 @@ public class MapController {
                 } else {
                     messageBox.setText("You can't afford this tile!");
                 }
-            }
-        }
-        private class Turn {
-            private ArrayList<Player> order;
-            int turnCount = 0;
-            int roundCount = 0;
-
-            private Turn(ArrayList<Player> p) {
-                order = new ArrayList<>();
-                order.addAll(p);
-            }
-
-            public Player nextTurn() {
-                //System.out.println("TURN: " + order.get(turnCount));
-                if (turnCount >= order.size() - 1 && order.size()  > 0) {
-                    System.out.println("HERE");
-                    turnCount = 0;
-                    Collections.sort(order);
-                }
-                turnCount++;
-                roundCount = turnCount % players.size() + 1;
-                return order.get(turnCount - 1);
-            }
-
-            public int getCurrentRound() {
-                return roundCount;
-            }
-
-            public int getCurrentTurn() {
-                return turnCount;
             }
         }
     }

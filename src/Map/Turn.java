@@ -24,6 +24,8 @@ public class Turn {
     public Player nextTurn() {
         if (players.peek() == null) {
             players.addAll(passedPlayers);
+            Player z = players.peek();
+            z.setIsLowest(true);
             return nextTurn();
         } else {
             Player current = players.poll();

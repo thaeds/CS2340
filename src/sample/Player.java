@@ -48,6 +48,16 @@ public class Player implements Comparable {
     int ore = 0;
     int energy = 4;
 
+    public boolean isLowest() {
+        return isLowest;
+    }
+
+    public void setIsLowest(boolean isLowest) {
+        this.isLowest = isLowest;
+    }
+
+    boolean isLowest = false;
+
     public Mule getMule() {
         return mule;
     }
