@@ -323,17 +323,18 @@ public class MapController {
     }
 
     //List of random events and their detailed implementation
-    String RANDOM_EVENT1 = "1. YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS";
-    String RANDOM_EVENT2 = "2. A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.";
-    String RANDOM_EVENT3 = "3. THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $ 8*m.";
-    String RANDOM_EVENT4 = "4. YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $2*m.";
-    String RANDOM_EVENT5 = "5. FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $4*m.";
-    String RANDOM_EVENT6 = "6. MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
-    String RANDOM_EVENT7 = "7. YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $6*m TO CLEAN IT UP.";
+    String RANDOM_EVENT1 = "YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS";
+    String RANDOM_EVENT2 = "A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.";
+    String RANDOM_EVENT3 = "THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $";
+    String RANDOM_EVENT4 = "YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $";
+    String RANDOM_EVENT5 = "FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $";
+    String RANDOM_EVENT6 = "MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
+    String RANDOM_EVENT7 = "YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $";
     protected int RANDOM_EVENT_CHANCE = 27;
     public void randomEvents() {
         int m; //Factor m
-        if (!currentPlayer.isLowest()) { // player is NOT a lowest
+        if ((1 + (int) (Math.random() * ((100 - 1) + 1))) <= RANDOM_EVENT_CHANCE) { //random even DID happen by chance
+
             if (getCurrentRound() <= 3) { // Round 1 to 3
                 m = 25;
             } else if (getCurrentRound() <= 7) { // Round 4 to 7
@@ -345,42 +346,52 @@ public class MapController {
             }
             System.out.println("M factor is " + m); //debugging + warning crap
 
-            if ((1 + (int) (Math.random() * ((27 - 1) + 1))) > 26) { //random even DID happen by chance
+            if (!currentPlayer.isLowest()) { // player is NOT a lowest
                 int event_selector = 1 + (int) (Math.random() * ((7 - 1) + 1));
                 String event = "";
-                switch (event_selector) { // need to implement aftermath of random event **TODO
+                switch (event_selector) {
                     case 1:
                         event = RANDOM_EVENT1;
+                        currentPlayer.setFood(currentPlayer.getFood() + 3);
+                        currentPlayer.setEnergy(currentPlayer.getEnergy() + 2);
                         break;
                     case 2:
                         event = RANDOM_EVENT2;
+                        currentPlayer.setOre(currentPlayer.getOre() + 2);
                         break;
                     case 3:
-                        event = RANDOM_EVENT3;
+                        event = RANDOM_EVENT3 + (8*m);
+                        currentPlayer.setBalance(currentPlayer.getBalance() + 8*m);
                         break;
                     case 4:
-                        event = RANDOM_EVENT4;
+                        event = RANDOM_EVENT4 + (2*m);
+                        currentPlayer.setBalance(currentPlayer.getBalance() + 2*m);
                         break;
                     case 5:
-                        event = RANDOM_EVENT5;
+                        event = RANDOM_EVENT5 + (4*m);
+                        currentPlayer.setBalance(currentPlayer.getBalance() - 4*m);
                         break;
                     case 6:
                         event = RANDOM_EVENT6;
+                        currentPlayer.setFood(currentPlayer.getBalance() / 2);
                         break;
                     case 7:
-                        event = RANDOM_EVENT7;
+                        event = RANDOM_EVENT7 + (6*m) + "TO CLEAN IT UP.";
+                        currentPlayer.setBalance(currentPlayer.getBalance() - 6*m);
                         break;
                     default:
                         event = "this should not happen";
                         break;
                 }
-            } else { // random event DID NOT happen by chance
-                System.out.println("No random event occured. For moment peace continues.");
+            } else { // random event DOES NOT OCCUR because this player sucks/lowest
+                System.out.println("God brings mercy on the poorest thus no random event");
             }
-        } else { // random event DOES NOT OCCUR because this player sucks/lowest
-            System.out.println("God brings mercy on the poorest thus no random event");
+        } else { // random event DID NOT happen by chance
+            System.out.println("No random event occured. For moment peace continues.");
         }
     }//END OF randomEvents()
+
+
 
 } //END OF MapController class
 
