@@ -135,11 +135,16 @@ public class Controller implements Initializable {
         myPane = ldr.load(getClass().getResource("../Map/map.fxml"));
         Scene scene = new Scene(myPane);
         stage.setScene(scene);
+        Context.setMapStage(stage);
         stage.setOnCloseRequest(a -> {
             Platform.exit();
             System.exit(0);
         });
         prevStage.close();
         stage.show();
+    }
+    @FXML
+    public void loadSave() {
+        Context.readGameSaveState();
     }
 }

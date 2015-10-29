@@ -6,16 +6,16 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
  * Created by Sergey on 9/25/15.
  */
-public class Context implements Serializable{
+public class Context {
     private static ArrayList<Player> players;
     private static Player currentPlayer;
-    private Stage prevStage;
+    private static Stage mapStage;
     public static Scene map;
     public static int currentRound = 1;
     public static Player getCurrentPlayer() {
@@ -31,6 +31,14 @@ public class Context implements Serializable{
         System.out.println("Current Player" + p.toString());
         currentPlayer = p;
     }
+    public static Stage getMapStage() {
+        return mapStage;
+    }
+
+    public static void setMapStage(Stage mStage) {
+        mapStage = mStage;
+    }
+
     public static void loadMap() {
         FXMLLoader ldr = null;
         Parent root;
@@ -114,5 +122,35 @@ public class Context implements Serializable{
     }
     public static ArrayList<Player> getPlayers() {
         return players;
+    }
+    public static void writeGameSaveState() {
+        gameSaveState save = new gameSaveState();
+        save.setCurrentPlayer(currentPlayer);
+        save.setMainMap(mapStage);
+        save.setPlayers(players);
+        try {
+            FileOutputStream f = new FileOutputStream("M.U.L.E._Save.data");
+            ObjectOutputStream obj_out = new ObjectOutputStream(f);
+            obj_out.writeObject(save);
+        } catch(Exception e) {
+            File saveGame = new File("M.U.L.E._Save.data");
+            writeGameSaveState();
+        }
+    }
+    public static void readGameSaveState() {
+        try {
+            FileInputStream f = new FileInputStream("M.U.L.E._Save.data");
+            ObjectInputStream obj_in = new ObjectInputStream(f);
+            Object obj = obj_in.readObject();
+            if (obj instanceof gameSaveState) {
+                gameSaveState saveState = (gameSaveState) obj;
+                currentPlayer = saveState.getCurrentPlayer();
+                mapStage = saveState.getMainMap();
+                players = saveState.getPlayers();
+                mapStage.show();
+            }
+    } catch(Exception e) {
+            System.out.println("SAVE NOT FOUND!!!");
+        }
     }
 }

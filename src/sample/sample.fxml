@@ -95,6 +95,7 @@
                  <Font name="System Bold" size="20.0" />
              </font>
              </Text>
+            <Button layoutX="558.0" layoutY="393.0" mnemonicParsing="false" onAction="#loadSave" prefHeight="51.0" prefWidth="119.0" text="Load Save" />
          </children>
       </Pane>
    </children>
