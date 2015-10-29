@@ -7,7 +7,8 @@ import javafx.scene.image.ImageView;
  * Created by Sergey on 9/24/15.
  */
 public class Mountain extends Tile {
-    public Mountain() {
+    public Mountain(String i) {
+        super(i);
         this.setEnergyPoints(1);
         this.setFoodPoints(1);
         this.setOrePoints(2);

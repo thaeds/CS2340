@@ -4,10 +4,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import sample.*;
 
+import java.io.Serializable;
+
 /**
  * Created by Sergey on 9/24/15.
  */
-public class Tile extends ImageView {
+public class Tile extends ImageView implements Serializable{
     private boolean isOwned;
     private int cost;
     private int FoodPoints;
@@ -15,12 +17,13 @@ public class Tile extends ImageView {
     private int OrePoints;
     private Player owner;
     private Mule mule;
-
+    private String identifier;
     public boolean isOwned() {
         return isOwned;
     }
 
-    public Tile() {
+    public Tile(String i) {
+        this.identifier = i;
         this.setEnergyPoints(2);
         this.setFoodPoints(3);
         this.setOrePoints(1);
@@ -29,7 +32,9 @@ public class Tile extends ImageView {
         owner = null;
         this.setImage(new Image(getClass().getResource("plain.png").toExternalForm()));
     }
-
+    public String getIdentifier() {
+        return identifier;
+    }
     public int getScore() {
         return EnergyPoints + FoodPoints + OrePoints;
     }
@@ -88,5 +93,17 @@ public class Tile extends ImageView {
 
     public void setMule(Mule mule) {
         this.mule = mule;
+    }
+    @Override
+    public String toString() {
+        return identifier;
+    }
+    @Override
+    public boolean equals(Object o) {
+        return this.identifier.equals(((Tile) o).getIdentifier());
+    }
+    @Override
+    public int hashCode() {
+        return identifier.hashCode();
     }
 }

@@ -2,6 +2,8 @@ package sample;
 
 import javafx.scene.paint.Color;
 import Map.*;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -14,15 +16,41 @@ import java.util.Objects;
  * @author Joseph Hooper
  * @version 1.0.0
  */
-public class Player implements Comparable {
+public class Player implements Comparable, Serializable {
 
     String name;
     String race;
-    Color color;
+    String stringColor;
+    double red;
+    double green;
+    double blue;
+    double opacity;
+    transient Color color;
 
     public int getFood() {
         return food;
     }
+
+    public String getStringColor() {
+        return stringColor;
+    }
+
+    public double getGreen() {
+        return green;
+    }
+
+    public double getRed() {
+        return red;
+    }
+
+    public double getBlue() {
+        return blue;
+    }
+
+    public double getOpacity() {
+        return opacity;
+    }
+
 
     public void setFood(int food) {
         this.food = food;
@@ -105,6 +133,8 @@ public class Player implements Comparable {
 
     public void setColor(Color color) {
         this.color = color;
+        this.stringColor = color.toString();
+        System.out.println("COLOR : " + stringColor);
     }
 
     public int getBalance() {
@@ -141,6 +171,10 @@ public class Player implements Comparable {
         this.name = name;
         this.race = race;
         this.color = color;
+        this.red = color.getRed();
+        this.blue = color.getBlue();
+        this.green = color.getGreen();
+        this.opacity = color.getOpacity();
         this.balance = 10000;
     }
 

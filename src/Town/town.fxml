@@ -25,6 +25,7 @@
             <Button fx:id="enterStore" mnemonicParsing="false" prefHeight="170.0" prefWidth="195.0" text="Enter Store" GridPane.columnIndex="1" />
             <Button mnemonicParsing="false" prefHeight="158.0" prefWidth="215.0" text="Land" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" prefHeight="152.0" prefWidth="167.0" text="Assay" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#saveGame" prefHeight="181.0" prefWidth="179.0" text="Hostel(Save Game)" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>

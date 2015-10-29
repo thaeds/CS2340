@@ -13,6 +13,7 @@ import javafx.scene.effect.BlurType;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Shadow;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -29,6 +30,7 @@ import java.util.*;
  */
 public class MapController {
     Town t;
+    ArrayList<Tile> tileList = new ArrayList<>();
     private class MapStuff extends TimerTask {
         //private ArrayDeque<Player> turn = new ArrayDeque<>();
         Turn ordering;
@@ -53,7 +55,8 @@ public class MapController {
         }
 
         private void startMap1() {
-            t = new Town();
+            t = new Town("town");
+            tileList.add(t);
             t.setOnMouseClicked(a -> {
                 Context.loadTown();
                 Stage curStage = (Stage)mapWindow.getScene().getWindow();
@@ -61,10 +64,10 @@ public class MapController {
             });
             tiles.add(t, 4, 2);
 
-            River r1 = new River();
-            River r2 = new River();
-            River r3 = new River();
-            River r4 = new River();
+            River r1 = new River("r1");
+            River r2 = new River("r2");
+            River r3 = new River("r3");
+            River r4 = new River("r4");
 
 
             tiles.add(r1, 4, 0);
@@ -72,16 +75,32 @@ public class MapController {
             tiles.add(r3, 4, 3);
             tiles.add(r4, 4, 4);
 
-            Mountain m1 = new Mountain();
-            Mountain m2 = new Mountain();
-            Mountain m3 = new Mountain();
-            Mountain m4 = new Mountain();
-            Mountain m5 = new Mountain();
-            Mountain m6 = new Mountain();
-            Mountain m7 = new Mountain();
-            Mountain m8 = new Mountain();
-            Mountain m9 = new Mountain();
-            Mountain m10 = new Mountain();
+            tileList.add(r1);
+            tileList.add(r2);
+            tileList.add(r3);
+            tileList.add(r4);
+
+            Mountain m1 = new Mountain("m1");
+            Mountain m2 = new Mountain("m2");
+            Mountain m3 = new Mountain("m3");
+            Mountain m4 = new Mountain("m4");
+            Mountain m5 = new Mountain("m5");
+            Mountain m6 = new Mountain("m6");
+            Mountain m7 = new Mountain("m7");
+            Mountain m8 = new Mountain("m8");
+            Mountain m9 = new Mountain("m9");
+            Mountain m10 = new Mountain("m10");
+
+            tileList.add(m1);
+            tileList.add(m2);
+            tileList.add(m3);
+            tileList.add(m4);
+            tileList.add(m5);
+            tileList.add(m6);
+            tileList.add(m7);
+            tileList.add(m8);
+            tileList.add(m9);
+            tileList.add(m10);
 
             tiles.add(m1, 2, 0);
             tiles.add(m2, 1, 1);
@@ -94,37 +113,67 @@ public class MapController {
             tiles.add(m9, 6, 3);
             tiles.add(m10, 8, 4);
 
-            Tile t1 = new Tile();
-            Tile t2 = new Tile();
-            Tile t3 = new Tile();
-            Tile t4 = new Tile();
-            Tile t5 = new Tile();
-            Tile t6 = new Tile();
-            Tile t7 = new Tile();
-            Tile t8 = new Tile();
-            Tile t9 = new Tile();
-            Tile t10 = new Tile();
-            Tile t11 = new Tile();
-            Tile t12 = new Tile();
-            Tile t13 = new Tile();
-            Tile t14 = new Tile();
-            Tile t15 = new Tile();
-            Tile t16 = new Tile();
-            Tile t17 = new Tile();
-            Tile t18 = new Tile();
-            Tile t19 = new Tile();
-            Tile t20 = new Tile();
-            Tile t21 = new Tile();
-            Tile t22 = new Tile();
-            Tile t23 = new Tile();
-            Tile t24 = new Tile();
-            Tile t25 = new Tile();
-            Tile t26 = new Tile();
-            Tile t27 = new Tile();
-            Tile t28 = new Tile();
-            Tile t29 = new Tile();
-            Tile t30 = new Tile();
+            Tile t1 = new Tile("t1");
+            Tile t2 = new Tile("t2");
+            Tile t3 = new Tile("t3");
+            Tile t4 = new Tile("t4");
+            Tile t5 = new Tile("t5");
+            Tile t6 = new Tile("t6");
+            Tile t7 = new Tile("t7");
+            Tile t8 = new Tile("t8");
+            Tile t9 = new Tile("t9");
+            Tile t10 = new Tile("t10");
+            Tile t11 = new Tile("t11");
+            Tile t12 = new Tile("t12");
+            Tile t13 = new Tile("t13");
+            Tile t14 = new Tile("t14");
+            Tile t15 = new Tile("t15");
+            Tile t16 = new Tile("t16");
+            Tile t17 = new Tile("t17");
+            Tile t18 = new Tile("t18");
+            Tile t19 = new Tile("t19");
+            Tile t20 = new Tile("t20");
+            Tile t21 = new Tile("t21");
+            Tile t22 = new Tile("t22");
+            Tile t23 = new Tile("t23");
+            Tile t24 = new Tile("t24");
+            Tile t25 = new Tile("t25");
+            Tile t26 = new Tile("t26");
+            Tile t27 = new Tile("t27");
+            Tile t28 = new Tile("t28");
+            Tile t29 = new Tile("t29");
+            Tile t30 = new Tile("t30");
 
+            tileList.add(t1);
+            tileList.add(t2);
+            tileList.add(t3);
+            tileList.add(t4);
+            tileList.add(t5);
+            tileList.add(t6);
+            tileList.add(t7);
+            tileList.add(t8);
+            tileList.add(t9);
+            tileList.add(t10);
+            tileList.add(t11);
+            tileList.add(t12);
+            tileList.add(t13);
+            tileList.add(t14);
+            tileList.add(t15);
+            tileList.add(t16);
+            tileList.add(t17);
+            tileList.add(t18);
+            tileList.add(t19);
+            tileList.add(t20);
+            tileList.add(t21);
+            tileList.add(t22);
+            tileList.add(t23);
+            tileList.add(t24);
+            tileList.add(t25);
+            tileList.add(t26);
+            tileList.add(t27);
+            tileList.add(t28);
+            tileList.add(t29);
+            tileList.add(t30);
 
             tiles.add(t1, 0, 0);
             tiles.add(t2, 0, 1);
@@ -192,7 +241,6 @@ public class MapController {
                 });
             }
         }
-
         private void setTileOwner(Player p) {
             for (Node n : tiles.getChildren()) {
                 if (n.getEffect() == null) {
@@ -303,6 +351,27 @@ public class MapController {
         map = new MapStuff();
         timer = new Timer();
         timer.schedule(map, 0, 5000);
+        updateTileOwners();
+    }
+    public void updateTileOwners() {
+        for(Player p : Context.getPlayers()) {
+            for(Tile t : tileList) {
+                if (p.getTiles().contains(t)) {
+                    p.getTiles().remove(t);
+                    p.addTile(t);
+                    t.setOwner(p);
+                    t.setIsOwned(true);
+                    System.out.println("Here 4");
+                    Shadow s = new Shadow();
+                    s.setColor(p.getColor());
+                    s.setBlurType(BlurType.GAUSSIAN);
+                    s.setRadius(50);
+                    s.setWidth(0);
+                    s.setHeight(0);
+                    t.setEffect(s);
+                }
+            }
+        }
     }
     @FXML
     private void nextPlayer(){
@@ -396,7 +465,6 @@ public class MapController {
             messageBox.setText(event);
         }
     }//END OF randomEvents()
-
 
 
 } //END OF MapController class

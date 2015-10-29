@@ -8,7 +8,8 @@ import sample.*;
  * Created by Sergey on 9/24/15.
  */
 public class Town extends Tile {
-    public Town() {
+    public Town(String i) {
+        super(i);
         this.setIsOwned(false);
         this.setOwner(new Player("GAME","GAME", Color.LIGHTGREEN));
         this.setCost(Integer.MAX_VALUE);

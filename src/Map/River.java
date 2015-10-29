@@ -7,7 +7,8 @@ import javafx.scene.image.ImageView;
  * Created by Sergey on 9/24/15.
  */
 public class River extends Tile {
-    public River() {
+    public River(String i) {
+        super(i);
         this.setIsOwned(false);
         this.setOwner(null);
         this.setEnergyPoints(2);

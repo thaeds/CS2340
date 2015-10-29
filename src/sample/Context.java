@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -126,15 +127,16 @@ public class Context {
     public static void writeGameSaveState() {
         gameSaveState save = new gameSaveState();
         save.setCurrentPlayer(currentPlayer);
-        save.setMainMap(mapStage);
         save.setPlayers(players);
         try {
-            FileOutputStream f = new FileOutputStream("M.U.L.E._Save.data");
+            File saveGame = new File("M.U.L.E._Save.data");
+            FileOutputStream f = new FileOutputStream(saveGame);
             ObjectOutputStream obj_out = new ObjectOutputStream(f);
             obj_out.writeObject(save);
         } catch(Exception e) {
-            File saveGame = new File("M.U.L.E._Save.data");
-            writeGameSaveState();
+            System.out.println("SAVE EROR!");
+            System.out.println(e.getMessage());
+            //writeGameSaveState();
         }
     }
     public static void readGameSaveState() {
@@ -145,12 +147,16 @@ public class Context {
             if (obj instanceof gameSaveState) {
                 gameSaveState saveState = (gameSaveState) obj;
                 currentPlayer = saveState.getCurrentPlayer();
-                mapStage = saveState.getMainMap();
                 players = saveState.getPlayers();
-                mapStage.show();
+                for (Player p : players) {
+                    Color c = new Color(p.getRed(), p.getGreen(), p.getBlue(), p.getOpacity());
+                    p.setColor(c);
+                }
+                Context.loadMap();
             }
     } catch(Exception e) {
             System.out.println("SAVE NOT FOUND!!!");
+            System.out.println(e.getMessage());
         }
     }
 }

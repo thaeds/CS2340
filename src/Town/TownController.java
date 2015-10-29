@@ -103,5 +103,9 @@ public class TownController {
 //        prevStage.close();
 //        stage.show();
     }
+    @FXML
+    public void saveGame() {
+        Context.writeGameSaveState();
+    }
 
 }

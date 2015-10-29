@@ -12,13 +12,6 @@ import java.util.ArrayList;
 public class gameSaveState implements Serializable {
     private ArrayList<Player> players;
     private Player currentPlayer;
-    public Stage getMainMap() {
-        return mainMap;
-    }
-
-    public void setMainMap(Stage mainMap) {
-        this.mainMap = mainMap;
-    }
 
     public ArrayList<Player> getPlayers() {
         return players;
