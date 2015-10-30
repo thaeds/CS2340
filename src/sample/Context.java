@@ -134,9 +134,8 @@ public class Context {
             ObjectOutputStream obj_out = new ObjectOutputStream(f);
             obj_out.writeObject(save);
         } catch(Exception e) {
-            System.out.println("SAVE EROR!");
+            System.out.println("SAVE ERROR!");
             System.out.println(e.getMessage());
-            //writeGameSaveState();
         }
     }
     public static void readGameSaveState() {
