@@ -438,27 +438,36 @@ public class MapController {
                         currentPlayer.setBalance(currentPlayer.getBalance() + 2*m);
                         break;
                     case 5:
-                        event = event + RANDOM_EVENT5 + (4*m);
-                        currentPlayer.setBalance(currentPlayer.getBalance() - 4*m);
+                        if(!currentPlayer.isLowest()) {
+                            event = event + RANDOM_EVENT5 + (4 * m);
+                            currentPlayer.setBalance(currentPlayer.getBalance() - 4 * m);
+                        } else {
+
+                        }
                         break;
                     case 6:
-                        event = event + RANDOM_EVENT6;
-                        currentPlayer.setFood(currentPlayer.getBalance() / 2);
+                        if(!currentPlayer.isLowest()) {
+                            event = event + RANDOM_EVENT6;
+                            currentPlayer.setFood(currentPlayer.getBalance() / 2);
+                        }
                         break;
                     case 7:
-                        event = event + RANDOM_EVENT7 + (6*m) + "TO CLEAN IT UP.";
-                        currentPlayer.setBalance(currentPlayer.getBalance() - 6*m);
+                        if(!currentPlayer.isLowest()) {
+                            event = event + RANDOM_EVENT7 + (6 * m) + "TO CLEAN IT UP.";
+                            currentPlayer.setBalance(currentPlayer.getBalance() - 6 * m);
+                        }
                         break;
                     default:
                         event = "this should not happen";
                         break;
                 }
                 messageBox.setText(event);
-            } else { // random event DOES NOT OCCUR because this player sucks/lowest
-                event = event + "God brings mercy on the poorest thus no random event";
+                System.out.println(event);
+            } /*else { // random event DOES NOT OCCUR because this player sucks/lowest
+                event = e   vent + "God brings mercy on the poorest thus no random event";
                 System.out.println(event);
                 messageBox.setText(event);
-            }
+            }*/
         } else { // random event DID NOT happen by chance
             event = event + "No random event occured. For moment peace continues.";
             System.out.println(event);
