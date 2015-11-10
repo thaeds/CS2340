@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import sample.Context;
+import sample.Context;g
 import sample.Player;
 
 import java.util.LinkedList;
@@ -10,7 +10,7 @@ import java.util.Queue;
 import static org.junit.Assert.*;
 
 /**
- * Created by Joseph on 11/9/2015.
+ * Created by Joseph on 11/9/2015.MuleTest
  */
 public class MuleTest {
 
