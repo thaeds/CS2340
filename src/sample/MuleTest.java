@@ -1,8 +1,9 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import sample.Context;g
+import sample.Context;
 import sample.Player;
+import
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -56,13 +57,8 @@ public class MuleTest {
     }
 
     @Test
-    public void testGamble() {
-
-    }
-    @Test
-    public void testSetMouseOver() {}
-    @Test
-    public void testNextPlayer() {
-
+    public void setNameTest() {
+        p2.setName("Kyrsten");
+        assertEquals(p1.getName(), "Kyrsten"); //true
     }
 }
