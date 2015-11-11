@@ -72,7 +72,7 @@ public class Player implements Comparable, Serializable {
         this.energy = energy;
     }
 
-    int food = 8;
+        int food = 8;
     int ore = 0;
     int energy = 4;
 
