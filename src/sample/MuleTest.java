@@ -70,4 +70,23 @@ public class MuleTest {
         p2.setName("Kyrsten");
         assertEquals(p1.getName(), "Kyrsten"); //true
     }
+
+    @Test
+    public void setCurrentEnergy() {
+        p1.setCurrentEnergy(555)
+        assertEquals(p1.getCurrentEnergy(), 555); //true
+    }
+
+    @Test
+    public void getBalanceTest() {
+        assertEquals(p1.setBalance(0), 0); //true
+    }
+
+    @Test
+    public void getBalanceTest() {
+        assertEquals(p1.getBalance(), 0); //true
+    }
+
+    //Could not test other methods becouse they depend on the game running and real time user input.
+    //We are not familiar with how to do this within JUnits so were forced to test basic methods.
 }
