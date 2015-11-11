@@ -31,7 +31,7 @@ public class MuleTest {
     Player p3 = new Player("Joseph", "Human", blue);
 
 
-    @Test
+    @Test //Hyunook
     public void testNextTurn() throws Exception {
         Queue<Player> playerList = new LinkedList();
         assertTrue(playerList.peek() == null);
@@ -65,26 +65,27 @@ public class MuleTest {
 //        assertEquals(500 + 600 + 8 + 4, p3.getScore());
 //    }
 
-    @Test
+    @Test //Kyrsten
     public void setNameTest() {
         p2.setName("Kyrsten");
         assertEquals(p1.getName(), "Kyrsten"); //true
     }
 
-    @Test
+    @Test //Alex
     public void setCurrentEnergy() {
-        p1.setCurrentEnergy(555)
+        p1.setCurrentEnergy(555);
         assertEquals(p1.getCurrentEnergy(), 555); //true
     }
 
-    @Test
-    public void getBalanceTest() {
-        assertEquals(p1.setBalance(0), 0); //true
+    @Test //Joseph
+    public void setBalanceTest() {
+        p1.setBalance(0);
+        assertEquals(p1.getBalance(),0); //true
     }
 
-    @Test
+    @Test //Sergey
     public void getBalanceTest() {
-        assertEquals(p1.getBalance(), 0); //true
+        assertEquals(p1.getBalance(), 10000); //true
     }
 
     //Could not test other methods becouse they depend on the game running and real time user input.
