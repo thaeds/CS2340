@@ -1,19 +1,21 @@
 package sample;
 
 import Map.Tile;
+import Pub.Pub;
+import Store.StoreController;
+import javafx.stage.Stage;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import sample.Context;
-import sample.Player;
-
 import javafx.scene.paint.Color;
 
-import java.awt.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Joseph on 11/9/2015.MuleTest
@@ -25,11 +27,59 @@ public class MuleTest {
 //    Tile mountain = new Tile("mountain");
 //    Tile tile = new Tile("tile");
 
-    Color blue = new Color(0,0,0,0);
-    Player p1 = new Player("Kyrsten", "Flapper", blue);
-    Player p2 = new Player("Hyunook", "Buzzite", blue);
-    Player p3 = new Player("Joseph", "Human", blue);
+    Player p1;
+    Player p2;
+    Player p3;
+    Player p4;
+    Player p5;
 
+    ArrayList<Player> players = new ArrayList<>();
+
+    StoreController store;
+
+    Pub pub;
+
+    Controller controller;
+    @Before
+    public void setUp() {
+        Color blue = new Color(0,0,0,0);
+
+        p1 = new Player("Kyrsten", "Flapper", blue);
+        p2 = new Player("Hyunook", "Buzzite", blue);
+        p3 = new Player("Joseph", "Gollumer", blue);
+        p4 = new Player("Sergey", "Human", blue);
+        p5 = new Player("Alex", "Spheroid", blue);
+
+        players.add(p1);
+        players.add(p2);
+        players.add(p3);
+        players.add(p4);
+
+        store = new StoreController();
+
+        pub = new Pub();
+
+        controller = new Controller();
+    }
+
+    @Test //Sergey
+    public void saveTest() throws Exception {
+        p4.setBalance(2340);
+        Context.setPlayers(players);
+        Context.setCurrentRound(5);
+        Context.setCurrentPlayer(p4);
+        Context.writeGameSaveState();
+        Context.clear();
+        Context.readGameSaveStateTest();
+        Player cur = Context.getCurrentPlayer();
+        ArrayList<Player> newPlayers = Context.getPlayers();
+        assertEquals("Current player is wrong", p4.getName(), cur.getName());
+        assertEquals("Player balance is wrong", 2340, cur.getBalance());
+        for(Player play : newPlayers) {
+            assertTrue("Missing PLayer", players.contains(play));
+        }
+        assertEquals("Current round is wrong", 5, Context.getCurrentRound());
+    }
 
     @Test //Hyunook
     public void testNextTurn() throws Exception {
@@ -44,48 +94,53 @@ public class MuleTest {
         assertEquals(current, p1);
     }
 
-//    @Test
-//    public void testGetScore() {
-//        //beginner: 8 food, 4 energy, 0 ore
-//        assertEquals(0, p1.getNumberOfTiles()); //flapper: $1600
-//        assertEquals(0, p2.getNumberOfTiles()); //others: $1000
-//        assertEquals(0, p3.getNumberOfTiles()); //human: $600
-//
-//        assertEquals(0, p2.getScore());
-//        assertEquals(0, p1.getScore());
-//        assertEquals(0, p3.getScore());
-//
-//        p1.addTile(mountain); //$500 per tile owned
-//        assertEquals(500 + 1600 + 8 + 4, p1.getScore());
-//
-//        p2.addTile(river);
-//        assertEquals(500 + 1000 + 8 + 4, p2.getScore());
-//
-//        p3.addTile(tile);
-//        assertEquals(500 + 600 + 8 + 4, p3.getScore());
-//    }
 
     @Test //Kyrsten
-    public void setNameTest() {
-        p2.setName("Kyrsten");
-        assertEquals(p1.getName(), "Kyrsten"); //true
+    public void storeTest() {
+        Context.setPlayers(players);
+        Context.setCurrentPlayer(p1);
+        p1.setBalance(150);
+        store.buyEnergyMule();
+        assertEquals("Balance is not zero", 0, p1.getBalance());
+        assertTrue("Player should own a mule",p1.getMule() != null);
+        p1.setFood(0);
+        store.buyFood();
+        assertEquals("Player should be unable to buy food", 0, p1.getFood());
+        p1.setBalance(60);
+        store.buyFood();
+        store.buyFood();
+        assertEquals("Player should have 2 units of food", 2, p1.getFood());
     }
 
     @Test //Alex
-    public void setCurrentEnergy() {
-        p1.setCurrentEnergy(555);
-        assertEquals(p1.getCurrentEnergy(), 555); //true
+    public void testPub() {
+        Context.setCurrentRound(10);
+        Context.setRemainingTime(28);
+        Context.setCurrentPlayer(p5);
+        p5.setBalance(100);
+        int prevBalance = p5.getBalance();
+        int expectedBalance = prevBalance + 1950;
+        //Using test method to avoid random numbers in real method
+        double random = .25;
+        pub.gambleTest(Context.getCurrentPlayer(), random);
+        assertEquals("Pub winnings incorrect.", expectedBalance, p5.getBalance());
+        p5.setBalance(100);
+        Context.setCurrentRound(5);
+        Context.setRemainingTime(17);
+        random = .63;
+        prevBalance = p5.getBalance();
+        expectedBalance = prevBalance + 3213;
+        System.out.println("Winnings: " + pub.gambleTest(Context.getCurrentPlayer(), random));
+        assertEquals("Pub winnings incorrect.", expectedBalance, p5.getBalance());
     }
 
     @Test //Joseph
-    public void setBalanceTest() {
-        p1.setBalance(0);
-        assertEquals(p1.getBalance(),0); //true
-    }
-
-    @Test //Sergey
-    public void getBalanceTest() {
-        assertEquals(p1.getBalance(), 10000); //true
+    public void controllerTest() {
+        controller.setName("");
+        assertTrue("Name can't be empty", !controller.verifyName());
+        controller.addPlayer(p3);
+        controller.setName("Joseph");
+        assertTrue("Can't have duplicate name", !controller.verifyName());
     }
 
     //Could not test other methods becouse they depend on the game running and real time user input.

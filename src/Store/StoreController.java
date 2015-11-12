@@ -29,7 +29,7 @@ public class StoreController implements Initializable {
     }
 
     @FXML
-    private void buyFood() {
+    public void buyFood() {
         System.out.println("Bought Food");
         if(Context.getCurrentPlayer().getBalance() >= 30) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 30);
@@ -71,7 +71,7 @@ public class StoreController implements Initializable {
     }
 
     @FXML
-    private void buyEnergyMule() {
+    public void buyEnergyMule() {
         System.out.println("Bought Energy Mule");
         if(Context.getCurrentPlayer().getBalance() >= 150) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() - 150);
@@ -80,7 +80,7 @@ public class StoreController implements Initializable {
     }
 
     @FXML
-    private void sellFood() {
+    public void sellFood() {
         System.out.println("CLICKED sell food");
         if(Context.getCurrentPlayer().getFood() >= 1) {
             Context.getCurrentPlayer().setBalance(Context.getCurrentPlayer().getBalance() + 30);

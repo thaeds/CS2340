@@ -44,7 +44,20 @@ public class Pub {
         else if (time < 25) timeBonus = 100;
         else if (time < 37) timeBonus = 150;
         else timeBonus = 200;
-        int winnings = Math.min(250, (int) (rng.nextDouble()*roundBonus*timeBonus));
+        int winnings = Math.max(250, (int) (rng.nextDouble()*roundBonus*timeBonus));
+        p.setBalance(p.getBalance() + winnings);
+        return winnings;
+    }
+    public int gambleTest(Player p, double random) {
+        double rng = random;
+        int roundBonus = Context.getCurrentRound() % 4 + 50;
+        int time = Context.getRemainingTime();
+        int timeBonus = 0;
+        if (time < 12) timeBonus = 50;
+        else if (time < 25) timeBonus = 100;
+        else if (time < 37) timeBonus = 150;
+        else timeBonus = 200;
+        int winnings = Math.max(250, (int) (rng*roundBonus*timeBonus));
         p.setBalance(p.getBalance() + winnings);
         return winnings;
     }

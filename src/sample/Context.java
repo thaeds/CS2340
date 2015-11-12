@@ -19,23 +19,40 @@ public class Context {
     private static Stage mapStage;
     public static Scene map;
     public static int currentRound = 1;
+    private static int remainingTime = 140;
     public static Player getCurrentPlayer() {
-        return players.get(0);
+        return currentPlayer;
     }
 
     public static int getCurrentRound() {
         return currentRound;
     }
 
-    public static int getRemainingTime() {
-        return 140;
+    public static void setCurrentRound(int i) {
+        currentRound = i;
     }
+
+    public static int getRemainingTime() {
+        return remainingTime;
+    }
+
+    public static void setRemainingTime(int i) {
+        if (i > 0) {
+            remainingTime = i;
+        }
+    }
+
 
     public static void setCurrentPlayer(Player p) {
         System.out.println("Current Player" + p.toString());
         currentPlayer = p;
     }
-
+    public static void clear() {
+        players = null;
+        currentPlayer = null;
+        mapStage = null;
+        currentRound = 1;
+    }
     public static Stage getMapStage() {
         return mapStage;
     }
@@ -138,6 +155,7 @@ public class Context {
         gameSaveState save = new gameSaveState();
         save.setCurrentPlayer(currentPlayer);
         save.setPlayers(players);
+        save.setCurrentRound(currentRound);
         try {
             File saveGame = new File("M.U.L.E._Save.data");
             FileOutputStream f = new FileOutputStream(saveGame);
@@ -158,11 +176,32 @@ public class Context {
                 gameSaveState saveState = (gameSaveState) obj;
                 currentPlayer = saveState.getCurrentPlayer();
                 players = saveState.getPlayers();
+                currentRound = saveState.getCurrentRound();
                 for (Player p : players) {
                     Color c = new Color(p.getRed(), p.getGreen(), p.getBlue(), p.getOpacity());
                     p.setColor(c);
                 }
                 Context.loadMap();
+            }
+        } catch(Exception e) {
+            System.out.println("SAVE NOT FOUND!!!");
+            System.out.println(e.getMessage());
+        }
+    }
+    public static void readGameSaveStateTest() {
+        try {
+            FileInputStream f = new FileInputStream("M.U.L.E._Save.data");
+            ObjectInputStream obj_in = new ObjectInputStream(f);
+            Object obj = obj_in.readObject();
+            if (obj instanceof gameSaveState) {
+                gameSaveState saveState = (gameSaveState) obj;
+                currentPlayer = saveState.getCurrentPlayer();
+                players = saveState.getPlayers();
+                currentRound = saveState.getCurrentRound();
+                for (Player p : players) {
+                    Color c = new Color(p.getRed(), p.getGreen(), p.getBlue(), p.getOpacity());
+                    p.setColor(c);
+                }
             }
         } catch(Exception e) {
             System.out.println("SAVE NOT FOUND!!!");

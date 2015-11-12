@@ -48,6 +48,7 @@ public class Controller implements Initializable {
     private int numberOfPlayers;
     private int count = 1;
     private int playerNum = 1;
+    private String playerName;
     Stage prevStage;
 
     public void setPrevStage(Stage stage){
@@ -110,9 +111,15 @@ public class Controller implements Initializable {
 
     }
     @FXML public void nextPlayer() throws Exception{
+        for (Player p: playerList) {
+            if(p.getName().equals(name.getText())) {
+                name.setText("Please Enter a unique name");
+            }
+        }
         if(name.getText().trim().equals("")) {
             name.setText("Please enter a name!");
-        } else if (!name.getText().trim().equals("") && !name.getText().trim().equals("Please enter a name!")) {
+        }
+        else if (!name.getText().trim().equals("") && !name.getText().trim().equals("Please enter a name!")) {
             Player p = new Player(name.getText(), race.getSelectionModel().getSelectedItem().toString(), color.getValue());
             System.out.println(p);
             playerList.add(p);
@@ -123,6 +130,19 @@ public class Controller implements Initializable {
             } else {
                 startGame();
             }
+        }
+    }
+    public boolean verifyName() {
+        for (Player p: playerList) {
+            if(p.getName().equals(playerName)) {
+                return false;
+            }
+        }
+        if(playerName.trim().equals("")) {
+            return false;
+        }
+        else  {
+            return true;
         }
     }
     public void startGame() throws Exception {
@@ -142,6 +162,12 @@ public class Controller implements Initializable {
         });
         prevStage.close();
         stage.show();
+    }
+    public void setName(String n) {
+        playerName = n;
+    }
+    public void addPlayer(Player p) {
+        playerList.add(p);
     }
     @FXML
     public void loadSave() {

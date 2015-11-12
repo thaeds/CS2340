@@ -81,7 +81,10 @@ public class Tile extends ImageView implements Serializable{
     }
 
     public void setOwner(Player owner) {
-        owner = owner;
+        if(owner != null) {
+            this.owner = owner;
+        }
+        System.out.println("This tile's owner" + this.owner);
     }
     public boolean hasMule() {
         return mule != null;

@@ -216,4 +216,20 @@ public class Player implements Comparable, Serializable {
         System.out.println("Energy: " + this.getEnergy());
         System.out.println("Ore: " + this.getOre());
     }
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || !(o instanceof Player)) {
+            return false;
+        } else {
+            Player play = (Player) o;
+            if (this.name.equals(play.getName())) {
+                if (this.race.equals(play.getRace())) {
+                    if (this.color.equals(play.getColor())) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }

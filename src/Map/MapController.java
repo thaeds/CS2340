@@ -212,6 +212,7 @@ public class MapController {
             ca.setBrightness(.5);
             for (Node n : tiles.getChildren()) {
                 n.setOnMouseEntered(a -> {
+                    System.out.println("Current Owner: " + t.getOwner());
                     if(a.getClickCount() == 2) {
                         System.out.println("Current Owner: " + t.getOwner());
                         if(Context.getCurrentPlayer().getMule() != null &&
@@ -256,6 +257,8 @@ public class MapController {
                             Tile t = (Tile) n;
                             buyTile(p, t, s);
                             t.setOwner(Context.getCurrentPlayer());
+                            System.out.println("Owner: " + t.getOwner());
+                            System.out.println("Current Player: " + Context.getCurrentPlayer() );
                             nextPlayer();
                             if(a.getClickCount() == 2) {
                                 System.out.println("Current Owner: " + t.getOwner());
@@ -290,13 +293,13 @@ public class MapController {
             nextPlayer();
         }
         private void nextPlayer(){
-            for (int i = 0; i < players.size(); i++) {
-                if (players.get(i).getNumberOfTiles() >= 2) {
-                    selectionPhaseOver = true;
-                } else {
-                    selectionPhaseOver = false;
+            boolean moreThanTwo = true;
+            for (Player p: players) {
+                if (p.getNumberOfTiles() < 2) {
+                    moreThanTwo = false;
                 }
             }
+            selectionPhaseOver = moreThanTwo;
             if (selectionPhaseOver) {
                 messageBox.setText("Selection Phase is over! Begging Game!");
             }
@@ -359,9 +362,10 @@ public class MapController {
                 if (p.getTiles().contains(t)) {
                     p.getTiles().remove(t);
                     p.addTile(t);
+                    //System.out.println("Setting owner to: " + p);
                     t.setOwner(p);
                     t.setIsOwned(true);
-                    System.out.println("Here 4");
+                    //System.out.println("Here 4");
                     Shadow s = new Shadow();
                     s.setColor(p.getColor());
                     s.setBlurType(BlurType.GAUSSIAN);
