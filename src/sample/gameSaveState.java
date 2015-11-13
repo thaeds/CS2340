@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * This get/set current round, players and save current game state
  * @version 1.0 able to set current game state
  */
-class gameSaveState implements Serializable {
+public class gameSaveState implements Serializable {
     private ArrayList<Player> players;
     private Player currentPlayer;
     private int currentRound;
