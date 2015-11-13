@@ -1,7 +1,7 @@
 package Map;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+//import javafx.scene.image.ImageView;
 
 /**
  * Created by Sergey on 9/24/15.

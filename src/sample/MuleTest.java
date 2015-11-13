@@ -1,10 +1,10 @@
 package sample;
 
-import Map.Tile;
+//import Map.Tile;
 import Pub.Pub;
 import Store.StoreController;
-import javafx.stage.Stage;
-import org.junit.Assert;
+//import javafx.stage.Stage;
+//import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 

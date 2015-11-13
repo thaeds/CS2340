@@ -1,10 +1,10 @@
 package Pub;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
+//import javafx.scene.control.TextField;
+//import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.Button;
+//import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import sample.Context;
 import javafx.stage.Stage;
@@ -58,7 +58,7 @@ public class Pub {
         return winnings;
     }
     public int gambleTest(Player p, double random) {
-        double rand = random;
+//        double rand = random;
         int roundBonus = Context.getCurrentRound() % 4 + 50;
         int time = Context.getRemainingTime();
         int timeBonus = 0;
@@ -66,7 +66,7 @@ public class Pub {
         else if (time < 25) timeBonus = 100;
         else if (time < 37) timeBonus = 150;
         else timeBonus = 200;
-        int winnings = Math.max(250, (int) (rand*roundBonus*timeBonus));
+        int winnings = Math.max(250, (int) (random*roundBonus*timeBonus));
         p.setBalance(p.getBalance() + winnings);
         return winnings;
     }

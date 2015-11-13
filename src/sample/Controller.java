@@ -49,7 +49,7 @@ public class Controller implements Initializable {
     private int count = 1;
     private int playerNum = 1;
     private String playerName;
-    Stage prevStage;
+    private Stage prevStage;
 
     public void setPrevStage(Stage stage){
         this.prevStage = stage;
@@ -134,14 +134,15 @@ public class Controller implements Initializable {
     }
     public boolean verifyName() {
         for (Player p: playerList) {
-            if(p.getName().equals(playerName)) {
-                return false;
-            }
+//            if(p.getName().equals(playerName)) {
+//                return false;
+//            }
+            return !(p.getName().equals(playerName));
         }
 
         return !playerName.trim().equals("");
     }
-    public void startGame() throws Exception {
+    private void startGame() throws Exception {
         Context.setPlayers(playerList);
         Stage stage = new Stage();
         stage.setResizable(false);

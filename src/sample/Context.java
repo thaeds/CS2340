@@ -23,7 +23,7 @@ public class Context {
     private static Player currentPlayer;
     private static Stage mapStage;
     public static Scene map;
-    public static int currentRound = 1;
+    private static int currentRound = 1;
     private static int remainingTime = 140;
     public static Player getCurrentPlayer() {
         return currentPlayer;

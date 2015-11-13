@@ -1,26 +1,31 @@
 package Town;
 
+/*
 import Map.Town;
 import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.BlurType;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import sample.Player;
+*/
+
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.layout.*;
+import javafx.scene.control.Button;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Shadow;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
-import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 import sample.Context;
-import sample.Player;
-
 import java.util.*;
+
+
+
 
 /**
  * Created by Alex on 10/2/15.
