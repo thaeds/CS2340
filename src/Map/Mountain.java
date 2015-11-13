@@ -5,6 +5,10 @@ import javafx.scene.image.ImageView;
 
 /**
  * Created by Sergey on 9/24/15.
+ * @author Sergey
+ * @version 1.0
+ * Mountain that extends tile and has its mountain value of Energy/Ore/Food
+ * It also has image of mountain.png
  */
 public class Mountain extends Tile {
     public Mountain(String i) {
