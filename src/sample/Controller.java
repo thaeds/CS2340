@@ -1,6 +1,6 @@
 package sample;
 
-import Map.MapController;
+//import Map.MapController;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -138,12 +138,8 @@ public class Controller implements Initializable {
                 return false;
             }
         }
-        if(playerName.trim().equals("")) {
-            return false;
-        }
-        else  {
-            return true;
-        }
+
+        return !playerName.trim().equals("");
     }
     public void startGame() throws Exception {
         Context.setPlayers(playerList);

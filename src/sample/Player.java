@@ -51,7 +51,6 @@ public class Player implements Comparable, Serializable {
         return opacity;
     }
 
-
     public void setFood(int food) {
         this.food = food;
     }
@@ -72,7 +71,7 @@ public class Player implements Comparable, Serializable {
         this.energy = energy;
     }
 
-        int food = 8;
+    int food = 8;
     int ore = 0;
     int energy = 4;
 

@@ -95,7 +95,6 @@ public class Context {
             //s.close();
         } catch (Exception e) {
             System.out.println("Can't load town");
-            return;
         }
     }
 
@@ -117,7 +116,6 @@ public class Context {
             //s.close();
         } catch (Exception e) {
             System.out.println("Can't load pub");
-            return;
         }
     }
 
@@ -139,7 +137,6 @@ public class Context {
             //s.close();
         } catch (Exception e) {
             System.out.println("Can't load Store");
-            return;
         }
     }
 

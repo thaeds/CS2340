@@ -1,6 +1,6 @@
 package sample;
 
-import Map.MapController;
+//import Map.MapController;
 import javafx.stage.Stage;
 
 import java.io.Serializable;
