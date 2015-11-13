@@ -1,24 +1,24 @@
 package Map;
 
-import javafx.application.Platform;
+//import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+//import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Scene;
+//import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Shadow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+//import javafx.scene.image.Image;
+//import javafx.scene.image.ImageView;
+//import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.paint.Paint;
+//import javafx.scene.paint.Color;
+//import javafx.scene.paint.ImagePattern;
+//import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import sample.*;
 import sample.Player;
@@ -27,6 +27,9 @@ import java.util.*;
 
 /**
  * Created by Sergey on 9/24/15.
+ * @author Sergey
+ * Map controller controls a map specifically and allows features
+ * Triigers random event
  */
 public class MapController {
     Town t;
@@ -405,7 +408,17 @@ public class MapController {
     String RANDOM_EVENT5 = "FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $";
     String RANDOM_EVENT6 = "MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
     String RANDOM_EVENT7 = "YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $";
-    protected int RANDOM_EVENT_CHANCE = 27;
+    protected final int RANDOM_EVENT_CHANCE = 27; // fixed chance of random event occuring
+
+    /**
+     * randomEvent()
+     * @author Hyun
+     * @version 1.0
+     * This randomly generate a number and check if it is below or equal to random event chance(<=27)
+     * if random event occurs, calculate the current round and find out if the player is lowest
+     * if NOT lowest, a event randomly occurs
+     * if IS lowest, no random event can occur
+     */
     public void randomEvents() {
         int m; //Factor m
         String event = currentPlayer.getName() + ": ";
