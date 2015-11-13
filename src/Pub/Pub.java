@@ -49,7 +49,7 @@ public class Pub {
         return winnings;
     }
     public int gambleTest(Player p, double random) {
-        double rand = random;
+        double rng = random;
         int roundBonus = Context.getCurrentRound() % 4 + 50;
         int time = Context.getRemainingTime();
         int timeBonus = 0;
@@ -57,7 +57,7 @@ public class Pub {
         else if (time < 25) timeBonus = 100;
         else if (time < 37) timeBonus = 150;
         else timeBonus = 200;
-        int winnings = Math.max(250, (int) (rand*roundBonus*timeBonus));
+        int winnings = Math.max(250, (int) (rng*roundBonus*timeBonus));
         p.setBalance(p.getBalance() + winnings);
         return winnings;
     }
