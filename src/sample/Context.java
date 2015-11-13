@@ -12,11 +12,6 @@ import java.util.ArrayList;
 
 /**
  * Created by Sergey on 9/25/15.
- * @author Sergey
- * @version 1.0 calculate current round and time, also set and get player in playerlist
- * @version 1.5 context class does following: loading structures (town/pub/store/map/...)
- * @version 2.0 save and load games
- *
  */
 public class Context {
     private static ArrayList<Player> players;

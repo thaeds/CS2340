@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 /**
  * Created by Sergey on 10/29/15.
- * This get/set current round, players and save current game state
- * @version 1.0 able to set current game state
  */
 public class gameSaveState implements Serializable {
     private ArrayList<Player> players;

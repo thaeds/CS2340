@@ -5,10 +5,6 @@ import javafx.scene.image.ImageView;
 
 /**
  * Created by Sergey on 9/24/15.
- * @author Sergey
- * @version 1.0
- * River that extends Tile and has its river vaule of Energy/Ore/Food
- * It also has image of river.png
  */
 public class River extends Tile {
     public River(String i) {

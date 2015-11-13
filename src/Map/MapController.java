@@ -27,9 +27,6 @@ import java.util.*;
 
 /**
  * Created by Sergey on 9/24/15.
- * @author Sergey
- * Map controller controls a map specifically and allows features
- * Triigers random event
  */
 public class MapController {
     Town t;
@@ -408,17 +405,7 @@ public class MapController {
     String RANDOM_EVENT5 = "FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $";
     String RANDOM_EVENT6 = "MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
     String RANDOM_EVENT7 = "YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $";
-    protected final int RANDOM_EVENT_CHANCE = 27; // fixed chance of random event occuring
-
-    /**
-     * randomEvent()
-     * @author Hyun
-     * @version 1.0
-     * This randomly generate a number and check if it is below or equal to random event chance(<=27)
-     * if random event occurs, calculate the current round and find out if the player is lowest
-     * if NOT lowest, a event randomly occurs
-     * if IS lowest, no random event can occur
-     */
+    protected int RANDOM_EVENT_CHANCE = 27;
     public void randomEvents() {
         int m; //Factor m
         String event = currentPlayer.getName() + ": ";

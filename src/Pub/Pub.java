@@ -15,9 +15,6 @@ import java.util.Random;
 
 /**
  * Created by Sergey on 10/2/15.
- * @author Sergey
- * @version 1.0
- * Pub allows user to do a gamble
  */
 public class Pub {
     @FXML
@@ -38,12 +35,6 @@ public class Pub {
         Stage curStage = (Stage)pubWindow.getScene().getWindow();
         curStage.close();
     }
-
-    /**
-     * A user can win a gamble and earn balance (depend on RNG and time bonus)
-     * @param p player
-     * @return reward winnings balance (int)
-     */
     private int gamble(Player p) {
         Random rng = new Random();
         int roundBonus = Context.getCurrentRound() % 4 + 50;
