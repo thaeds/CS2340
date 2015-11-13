@@ -21,7 +21,7 @@ import javafx.scene.layout.*;
 //import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import sample.*;
-import sample.Player;
+//import sample.Player;
 
 import java.util.*;
 
@@ -32,8 +32,8 @@ import java.util.*;
  * Triigers random event
  */
 public class MapController {
-    Town t;
-    ArrayList<Tile> tileList = new ArrayList<>();
+    private Town t;
+    private ArrayList<Tile> tileList = new ArrayList<>();
     private class MapStuff extends TimerTask {
         //private ArrayDeque<Player> turn = new ArrayDeque<>();
         Turn ordering;
@@ -51,7 +51,7 @@ public class MapController {
 
 
         public MapStuff() {
-            setPlayers(Context.getPlayers());
+            setPlayers();
             System.out.println("I am initialing!");
             startMap1();
             setMouseOver();
@@ -291,10 +291,12 @@ public class MapController {
                 }
             }
         }
-        public void setPlayers(ArrayList<Player> p) {
+
+        public void setPlayers() {
             ordering = new Turn();
             nextPlayer();
         }
+
         private void nextPlayer(){
             boolean moreThanTwo = true;
             for (Player p: players) {
@@ -351,7 +353,7 @@ public class MapController {
     private ArrayList<Player> players = new ArrayList<>();
     private HashMap<Node, Tile> tileImages = new HashMap<>();
     private MapStuff map;
-    Timer timer;
+    private Timer timer;
     @FXML
     public void initialize(){
         map = new MapStuff();
@@ -359,7 +361,7 @@ public class MapController {
         timer.schedule(map, 0, 5000);
         updateTileOwners();
     }
-    public void updateTileOwners() {
+    private void updateTileOwners() {
         for(Player p : Context.getPlayers()) {
             for(Tile t : tileList) {
                 if (p.getTiles().contains(t)) {
@@ -396,19 +398,19 @@ public class MapController {
     private Pane townWindow;
     Random rng = new Random();
 
-    public int getCurrentRound() {
+    private int getCurrentRound() {
         return 1;
     }
 
     //List of random events and their detailed implementation
-    String RANDOM_EVENT1 = "YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS";
-    String RANDOM_EVENT2 = "A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.";
-    String RANDOM_EVENT3 = "THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $";
-    String RANDOM_EVENT4 = "YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $";
-    String RANDOM_EVENT5 = "FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $";
-    String RANDOM_EVENT6 = "MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
-    String RANDOM_EVENT7 = "YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $";
-    protected final int RANDOM_EVENT_CHANCE = 27; // fixed chance of random event occuring
+    private final String RANDOM_EVENT1 = "YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS";
+    private final String RANDOM_EVENT2 = "A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.";
+    private final String RANDOM_EVENT3 = "THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $";
+    private final String RANDOM_EVENT4 = "YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $";
+    private final String RANDOM_EVENT5 = "FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $";
+    private final String RANDOM_EVENT6 = "MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
+    private final String RANDOM_EVENT7 = "YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $";
+    private final int RANDOM_EVENT_CHANCE = 27; // fixed chance of random event occuring
 
     /**
      * randomEvent()
@@ -419,7 +421,7 @@ public class MapController {
      * if NOT lowest, a event randomly occurs
      * if IS lowest, no random event can occur
      */
-    public void randomEvents() {
+    private void randomEvents() {
         int m; //Factor m
         String event = currentPlayer.getName() + ": ";
         if ((1 + (int) (Math.random() * ((100 - 1) + 1))) <= RANDOM_EVENT_CHANCE) { //random even DID happen by chance
@@ -455,24 +457,16 @@ public class MapController {
                         currentPlayer.setBalance(currentPlayer.getBalance() + 2*m);
                         break;
                     case 5:
-                        if(!currentPlayer.isLowest()) {
-                            event = event + RANDOM_EVENT5 + (4 * m);
-                            currentPlayer.setBalance(currentPlayer.getBalance() - 4 * m);
-                        } else {
-
-                        }
+                        event = event + RANDOM_EVENT5 + (4 * m);
+                        currentPlayer.setBalance(currentPlayer.getBalance() - 4 * m);
                         break;
                     case 6:
-                        if(!currentPlayer.isLowest()) {
-                            event = event + RANDOM_EVENT6;
-                            currentPlayer.setFood(currentPlayer.getBalance() / 2);
-                        }
+                        event = event + RANDOM_EVENT6;
+                        currentPlayer.setFood(currentPlayer.getBalance() / 2);
                         break;
                     case 7:
-                        if(!currentPlayer.isLowest()) {
-                            event = event + RANDOM_EVENT7 + (6 * m) + "TO CLEAN IT UP.";
-                            currentPlayer.setBalance(currentPlayer.getBalance() - 6 * m);
-                        }
+                        event = event + RANDOM_EVENT7 + (6 * m) + "TO CLEAN IT UP.";
+                        currentPlayer.setBalance(currentPlayer.getBalance() - 6 * m);
                         break;
                     default:
                         event = "this should not happen";
