@@ -5,7 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-//import Map.*;
+import Map.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +29,7 @@ public class StartGameController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void startGame() throws IOException {
+    public void startGame(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         stage.setTitle("Shop Management");
         Pane myPane = null;

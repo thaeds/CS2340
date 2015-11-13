@@ -23,7 +23,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-class Controller implements Initializable {
+public class Controller implements Initializable {
     @FXML private ChoiceBox difficulty;
     @FXML private ChoiceBox map;
     @FXML private ChoiceBox players;

@@ -18,14 +18,14 @@ import java.util.ArrayList;
  */
 public class Player implements Comparable, Serializable {
 
-    private String name;
-    private String race;
-    private String stringColor;
-    private double red;
-    private double green;
-    private double blue;
-    private double opacity;
-    private transient Color color;
+    String name;
+    String race;
+    String stringColor;
+    double red;
+    double green;
+    double blue;
+    double opacity;
+    transient Color color;
 
     public int getFood() {
         return food;
@@ -71,9 +71,9 @@ public class Player implements Comparable, Serializable {
         this.energy = energy;
     }
 
-    private int food = 8;
-    private int ore = 0;
-    private int energy = 4;
+    int food = 8;
+    int ore = 0;
+    int energy = 4;
 
     public boolean isLowest() {
         return isLowest;
@@ -83,7 +83,7 @@ public class Player implements Comparable, Serializable {
         this.isLowest = isLowest;
     }
 
-    private boolean isLowest = false;
+    boolean isLowest = false;
 
     public Mule getMule() {
         return mule;
@@ -93,8 +93,8 @@ public class Player implements Comparable, Serializable {
         this.mule = m;
     }
 
-    private Mule mule;
-    private int currentEnergy = 0;
+    Mule mule;
+    int currentEnergy = 0;
 
     public int getCurrentEnergy() {
         return currentEnergy;
@@ -104,7 +104,7 @@ public class Player implements Comparable, Serializable {
         this.currentEnergy = currentEnergy;
     }
 
-    private ArrayList<Tile> tiles = new ArrayList<>();
+    ArrayList<Tile> tiles = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -118,7 +118,7 @@ public class Player implements Comparable, Serializable {
         this.name = name;
     }
 
-    private String getRace() {
+    public String getRace() {
         return race;
     }
 
@@ -144,7 +144,7 @@ public class Player implements Comparable, Serializable {
         this.balance = balance;
     }
 
-    private int balance;
+    int balance;
 
     public ArrayList<Tile> getTiles() {
         return tiles;
@@ -154,7 +154,7 @@ public class Player implements Comparable, Serializable {
         return tiles.size();
     }
 
-    private int getScore() {
+    public int getScore() {
         if (getNumberOfTiles() == 0) {
             return 0;
         } else {

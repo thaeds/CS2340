@@ -27,19 +27,19 @@ public class MuleTest {
 //    Tile mountain = new Tile("mountain");
 //    Tile tile = new Tile("tile");
 
-    private Player p1;
-    private Player p2;
-    private Player p3;
-    private Player p4;
-    private Player p5;
+    Player p1;
+    Player p2;
+    Player p3;
+    Player p4;
+    Player p5;
 
-    private ArrayList<Player> players = new ArrayList<>();
+    ArrayList<Player> players = new ArrayList<>();
 
-    private StoreController store;
+    StoreController store;
 
-    private Pub pub;
+    Pub pub;
 
-    private Controller controller;
+    Controller controller;
     @Before
     public void setUp() {
         Color blue = new Color(0,0,0,0);
