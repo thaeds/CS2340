@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -27,5 +28,15 @@
       <Button id="buyMule" fx:id="sellFood" mnemonicParsing="false" onAction="#sellFood" prefHeight="150.0" prefWidth="324.0" text="Sell Food: $30" GridPane.rowIndex="2" />
       <Button id="buyMule" fx:id="sellEnergy" mnemonicParsing="false" onAction="#sellEnergy" prefHeight="150.0" prefWidth="324.0" text="Sell Energy: $25" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Button id="buyMule" fx:id="sellOre" mnemonicParsing="false" onAction="#sellOre" prefHeight="150.0" prefWidth="324.0" text="Sell Ore: $50" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+         <image>
+            <Image url="@Store.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="103.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <image>
+            <Image url="@Store2.jpg" />
+         </image>
+      </ImageView>
    </children>
 </GridPane>
