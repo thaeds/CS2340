@@ -7,19 +7,20 @@ import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import java.io.File;
 
 public class Main extends Application {
 
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        // Attempt to add music
-//        String musicPath = "pub.mp3";
-//        File musicFile = new File(musicPath);
-//        Media media = new Media(musicFile.toURI().toASCIIString());
-//        System.out.println(media.getSource());
-//        MediaPlayer player = new MediaPlayer(media);
-//        player.play();
+         //Attempt to add music
+        String musicPath = "pub.mp3";
+        File musicFile = new File(musicPath);
+        Media media = new Media(musicFile.toURI().toASCIIString());
+        System.out.println(media.getSource());
+        MediaPlayer player = new MediaPlayer(media);
+        player.play();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
         Parent root = (Parent) loader.load();
         Controller control = loader.getController();

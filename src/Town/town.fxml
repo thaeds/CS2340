@@ -7,9 +7,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<Pane fx:id="townWindow" maxHeight="400.0" maxWidth="585.0" minHeight="400.0" minWidth="585.0" prefHeight="400.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Town.TownController">
+<Pane fx:id="townWindow" maxHeight="400.0" maxWidth="585.0" minHeight="330.0" minWidth="584.0" prefHeight="330.0" prefWidth="584.0" style="-fx-background-image: url('Town.jpg');" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Town.TownController">
    <children>
-      <GridPane fx:id="buildings" gridLinesVisible="true" maxHeight="334.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="585.0" prefHeight="400.0" prefWidth="585.0">
+      <ImageView fitHeight="400.0" fitWidth="585.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Town.jpg" />
+         </image>
+      </ImageView>
+      <GridPane fx:id="buildings" gridLinesVisible="true" maxHeight="334.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="585.0" prefHeight="329.0" prefWidth="585.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -19,14 +24,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="enterPub" mnemonicParsing="false" prefHeight="200.0" prefWidth="390.0" text="Enter Pub" />
-            <Button fx:id="enterStore" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Enter Store" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" onAction="#saveGame" prefHeight="218.0" prefWidth="293.0" text="Hostel(Save Game)" GridPane.rowIndex="1" />
-            <ImageView fitHeight="199.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@Town.jpg" />
-               </image>
-            </ImageView>
+            <Button fx:id="enterPub" mnemonicParsing="false" prefHeight="200.0" prefWidth="390.0" style="-fx-background-color: transparent;" text="Enter Pub" />
+            <Button fx:id="enterStore" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Enter Store" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#saveGame" prefHeight="218.0" prefWidth="293.0" style="-fx-background-color: transparent;" text="Hostel(Save Game)" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>
