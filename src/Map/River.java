@@ -6,6 +6,12 @@ import javafx.scene.image.ImageView;
 /**
  * Created by Sergey on 9/24/15.
  */
+
+/**
+ * Constructor for River Tile
+ *
+ * @param Tile identifier string
+ */
 public class River extends Tile {
     public River(String i) {
         super(i);

@@ -51,6 +51,11 @@ public class Controller implements Initializable {
     private String playerName;
     Stage prevStage;
 
+    /**
+     * Sets previous stage
+     *
+     * @param stage stage being set
+     */
     public void setPrevStage(Stage stage){
         this.prevStage = stage;
     }
@@ -78,6 +83,10 @@ public class Controller implements Initializable {
         outerWindow.setStyle("-fx-background-image: url('" + "mule.jpg" + "')");
         title.setImage(muleLogo);
     }
+
+    /**
+     *Moves to next screen graphic
+     */
     @FXML public void nextScreen() {
         numberOfPlayers = players.getSelectionModel().getSelectedIndex() + 1;
         window.getChildren().remove(difficulty);
@@ -89,6 +98,10 @@ public class Controller implements Initializable {
         window.getChildren().remove(nextButton);
         displayPlayerConfig();
     }
+
+    /**
+     * Displays player configuration graphic
+     */
     private void displayPlayerConfig() {
         window.getChildren().add(name);
         window.getChildren().add(race);
@@ -101,6 +114,10 @@ public class Controller implements Initializable {
         race.setValue("Packer");
         window.getChildren().add(continueButton);
     }
+
+    /**
+     * Clears player configuration graphic
+     */
     private void purgePlayerConfig() {
         name.clear();
         window.getChildren().remove(color);
@@ -110,6 +127,10 @@ public class Controller implements Initializable {
         window.getChildren().add(color);
 
     }
+
+    /**
+     * Sets player info for each player
+     */
     @FXML public void nextPlayer() throws Exception{
         for (Player p: playerList) {
             if(p.getName().equals(name.getText())) {
@@ -132,6 +153,12 @@ public class Controller implements Initializable {
             }
         }
     }
+
+    /**
+     * Verifies and cleans up player names
+     *
+     * @return boolean stating if name is valif
+     */
     public boolean verifyName() {
         for (Player p: playerList) {
             if(p.getName().equals(playerName)) {
@@ -145,6 +172,10 @@ public class Controller implements Initializable {
             return true;
         }
     }
+
+    /**
+     * Starts game
+     */
     public void startGame() throws Exception {
         Context.setPlayers(playerList);
         Stage stage = new Stage();
@@ -163,12 +194,28 @@ public class Controller implements Initializable {
         prevStage.close();
         stage.show();
     }
+
+    /**
+     * Sets name
+     *
+     * @param n name being set
+     */
     public void setName(String n) {
         playerName = n;
     }
+
+    /**
+     * Adds player to the list of activie players
+     *
+     * @param p player being added
+     */
     public void addPlayer(Player p) {
         playerList.add(p);
     }
+
+    /**
+     * Loads save state
+     */
     @FXML
     public void loadSave() {
         Context.readGameSaveState();

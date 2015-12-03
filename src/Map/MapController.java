@@ -46,7 +46,10 @@ public class MapController {
             nextPlayer();
         }
 
-
+        /**
+         * Constructor for MapStuff object
+         *
+         */
         public MapStuff() {
             setPlayers(Context.getPlayers());
             System.out.println("I am initialing!");
@@ -54,6 +57,10 @@ public class MapController {
             setMouseOver();
         }
 
+        /**
+         * Intializes map
+         *
+         */
         private void startMap1() {
             t = new Town("town");
             tileList.add(t);
@@ -207,6 +214,14 @@ public class MapController {
             tiles.add(t30, 8, 3);
         }
 
+        /**
+         * allows special actions when tile is
+         * 1) Hovered over
+         *      Changes color
+         * 2) Double Clicked
+         *      Places Mule
+         *
+         */
         private void setMouseOver() {
             ColorAdjust ca = new ColorAdjust();
             ca.setBrightness(.5);
@@ -242,6 +257,12 @@ public class MapController {
                 });
             }
         }
+
+        /**
+         * Sets tile owner
+         *
+         * @param  p the player being set
+         */
         private void setTileOwner(Player p) {
             for (Node n : tiles.getChildren()) {
                 if (n.getEffect() == null) {
@@ -288,10 +309,21 @@ public class MapController {
                 }
             }
         }
+
+        /**
+         * Sets players for turns
+         *
+         * @param  p the list of players being set
+         */
         public void setPlayers(ArrayList<Player> p) {
             ordering = new Turn();
             nextPlayer();
         }
+
+        /**
+         * Swicthes to next player
+         *
+         */
         private void nextPlayer(){
             boolean moreThanTwo = true;
             for (Player p: players) {
@@ -317,6 +349,14 @@ public class MapController {
             setTileOwner(currentPlayer);
         }
 
+        /**
+         * Buys a tile for player
+         *
+         * @p Player buying tile
+         * @t tile being bought
+         * @s tile effect
+         *
+         */
         private void buyTile(Player p, Tile t, Shadow s) {
             if (!selectionPhaseOver) {
                 t.setEffect(s);
@@ -356,6 +396,11 @@ public class MapController {
         timer.schedule(map, 0, 5000);
         updateTileOwners();
     }
+
+    /**
+     * Updates tile owners
+     *
+     */
     public void updateTileOwners() {
         for(Player p : Context.getPlayers()) {
             for(Tile t : tileList) {
@@ -393,6 +438,10 @@ public class MapController {
     private Pane townWindow;
     Random rng = new Random();
 
+    /**
+     * Returns the round nuber
+     *
+     */
     public int getCurrentRound() {
         return 1;
     }
@@ -406,6 +455,11 @@ public class MapController {
     String RANDOM_EVENT6 = "MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
     String RANDOM_EVENT7 = "YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $";
     protected int RANDOM_EVENT_CHANCE = 27;
+
+    /**
+     * Triggers a random event
+     *
+     */
     public void randomEvents() {
         int m; //Factor m
         String event = currentPlayer.getName() + ": ";

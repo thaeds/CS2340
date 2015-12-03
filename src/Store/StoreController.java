@@ -28,6 +28,9 @@ public class StoreController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
+    /**
+     * buys food for player
+     */
     @FXML
     public void buyFood() {
         System.out.println("Bought Food");
@@ -36,6 +39,10 @@ public class StoreController implements Initializable {
             Context.getCurrentPlayer().setFood(Context.getCurrentPlayer().getFood() + 1);
         }
     }
+
+    /**
+     * buys energy for player
+     */
     @FXML
     private void buyEnergy() {
         System.out.println("Bought Energy");
@@ -44,6 +51,10 @@ public class StoreController implements Initializable {
             Context.getCurrentPlayer().setEnergy(Context.getCurrentPlayer().getEnergy() + 1);
         }
     }
+
+    /**
+     * buys ore for player
+     */
     @FXML
     private void buyOre() {
         System.out.println("Bought Ore");
@@ -52,6 +63,10 @@ public class StoreController implements Initializable {
             Context.getCurrentPlayer().setOre(Context.getCurrentPlayer().getOre() + 1);
         }
     }
+
+    /**
+     * buys food mule for player
+     */
     @FXML
     private void buyFoodMule() {
         System.out.println("Bought Food Mule");
@@ -61,6 +76,9 @@ public class StoreController implements Initializable {
         }
     }
 
+    /**
+     * buys ore mule for player
+     */
     @FXML
     private void buyOreMule() {
         System.out.println("Bought Ore Mule");
@@ -70,6 +88,9 @@ public class StoreController implements Initializable {
         }
     }
 
+    /**
+     * buys energy mule for player
+     */
     @FXML
     public void buyEnergyMule() {
         System.out.println("Bought Energy Mule");
@@ -79,6 +100,9 @@ public class StoreController implements Initializable {
         }
     }
 
+    /**
+     * Sells player food
+     */
     @FXML
     public void sellFood() {
         System.out.println("CLICKED sell food");
@@ -88,6 +112,9 @@ public class StoreController implements Initializable {
         }
     }
 
+    /**
+     * Sells player energy
+     */
     @FXML
     private void sellEnergy() {
         System.out.println("CLICKED sell energy");
@@ -97,6 +124,9 @@ public class StoreController implements Initializable {
         }
     }
 
+    /**
+     * Sells player ore
+     */
     @FXML
     private void sellOre() {
         System.out.println("CLICKED sell energy");
@@ -106,6 +136,9 @@ public class StoreController implements Initializable {
         }
     }
 
+    /**
+     * Sends player back to town game screen
+     */
     @FXML
     private void leaveStore() {
         System.out.println("clicked on exit store");

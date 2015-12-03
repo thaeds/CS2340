@@ -7,6 +7,13 @@ import sample.*;
 /**
  * Created by Sergey on 9/24/15.
  */
+
+
+/**
+ * Constructor for Town Tile
+ *
+ * @param Tile identifier string
+ */
 public class Town extends Tile {
     public Town(String i) {
         super(i);

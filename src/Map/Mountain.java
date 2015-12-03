@@ -6,6 +6,12 @@ import javafx.scene.image.ImageView;
 /**
  * Created by Sergey on 9/24/15.
  */
+
+/**
+ * Constructor for Mountain Tile
+ *
+ * @param Tile identifier string
+ */
 public class Mountain extends Tile {
     public Mountain(String i) {
         super(i);
