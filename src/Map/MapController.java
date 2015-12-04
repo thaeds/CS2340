@@ -403,18 +403,19 @@ public class MapController {
     String eventDetail;
     //
     public void randomEvents() {
+        eventDetail = new String();
         eventDetail = "System: " + currentPlayer.getName() + " - ";
         // TEXTBOX FORMAT: System: PlayerName - EVENT.
 
         if ((1 + (int) (Math.random() * ((100 - 1) + 1))) > randomEvent.getChance()) { // (!) NO RANDOM EVENT OCCURS
-            eventDetail = "NO RANDOM EVENT OCCURED";
+            eventDetail += "NO RANDOM EVENT OCCURED";
 
         } else { // RANDOM EVENT OCCURS
 
             // SET FACTOR BASED ON ROUND && CHOOSE A RANDOM EVENT TO AFFECT PLAYER / DISPLAY TO SOP+TEXTBOX
             randomEvent.setFactor(getCurrentRound());
             int event_selector = (int) (Math.random() * 9); // RANGE OF [0,9]
-            eventDetail = randomEvent.getDetail(event_selector);
+            eventDetail += randomEvent.getDetail(event_selector);
 
             switch (event_selector + 1) { // CHANGE PLAYER PROPERTY BASED ON THE EVENT
                 case 1: // PLAYER (+) FOOD (+3) (+) ENERGY (+2)
@@ -425,7 +426,7 @@ public class MapController {
                     currentPlayer.setOre(currentPlayer.getOre() + 2);
                     break;
                 case 3: // PLAYER (+) BALANCE (8*m)
-                    eventDetail = eventDetail + (8 * randomEvent.getFactor());
+                    eventDetail += eventDetail + (8 * randomEvent.getFactor());
                     currentPlayer.setBalance(currentPlayer.getBalance() + 8 * randomEvent.getFactor());
                     break;
                 case 4: // PLAYER (+) BALANCE (2*m)
@@ -469,12 +470,19 @@ public class MapController {
                 default:
                     eventDetail = "this should not happen and sorry for using a switch statement";
                     break;
-                }
+            }
         } // END OF RANDOM EVENT AFFECT
 
-    // PRINT OUT RESULT OF RANDOM EVENT
-    messageBox.setText(eventDetail);
-    System.out.println(eventDetail);
+
+        if ((1 + (int) (Math.random() * ((100 - 1) + 1))) > (randomEvent.getChance())) { // ROUND SPECIAL RANDOM EVENT
+            eventDetail += "\n~ SPECIAL ~ ROUND EVENT!! RECEIVES "
+                + (getCurrentRound() * 100) + " BALANCE! $$$$$$$";
+            currentPlayer.setBalance(currentPlayer.getBalance() + (getCurrentRound()*100));
+        } // END OF ROUND SPECIAL RANDOM EVENT
+
+        // PRINT OUT RESULT OF RANDOM EVENT
+        messageBox.setText(eventDetail);
+        System.out.println(eventDetail);
 
     } // END OF randomEvent()
     // ************************************************************************************************ //
