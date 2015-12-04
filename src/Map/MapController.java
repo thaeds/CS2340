@@ -397,88 +397,87 @@ public class MapController {
         return 1;
     }
 
-    //List of random events and their detailed implementation
-    String RANDOM_EVENT1 = "YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS";
-    String RANDOM_EVENT2 = "A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.";
-    String RANDOM_EVENT3 = "THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $";
-    String RANDOM_EVENT4 = "YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $";
-    String RANDOM_EVENT5 = "FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $";
-    String RANDOM_EVENT6 = "MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
-    String RANDOM_EVENT7 = "YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $";
-    protected int RANDOM_EVENT_CHANCE = 27;
+
+    // ************************************************************************************************ //
+    Event randomEvent = new Event();
+    String eventDetail;
+    //
     public void randomEvents() {
-        int m; //Factor m
-        String event = currentPlayer.getName() + ": ";
-        if ((1 + (int) (Math.random() * ((100 - 1) + 1))) <= RANDOM_EVENT_CHANCE) { //random even DID happen by chance
-            if (getCurrentRound() <= 3) { // Round 1 to 3
-                m = 25;
-            } else if (getCurrentRound() <= 7) { // Round 4 to 7
-                m = 50;
-            } else if (getCurrentRound() <= 11) { // Round 8 to 11
-                m = 75;
-            } else { // Final Round 12
-                m = 100;
-            }
-            //System.out.println("M factor is " + m); //debugging + warning crap
+        eventDetail = "System: " + currentPlayer.getName() + " - ";
+        // TEXTBOX FORMAT: System: PlayerName - EVENT.
 
-            if (!currentPlayer.isLowest()) { // player is NOT a lowest
-                int event_selector = 1 + (int) (Math.random() * ((7 - 1) + 1));
-                switch (event_selector) {
-                    case 1:
-                        event = event + RANDOM_EVENT1;
-                        currentPlayer.setFood(currentPlayer.getFood() + 3);
-                        currentPlayer.setEnergy(currentPlayer.getEnergy() + 2);
-                        break;
-                    case 2:
-                        event = event + RANDOM_EVENT2;
-                        currentPlayer.setOre(currentPlayer.getOre() + 2);
-                        break;
-                    case 3:
-                        event = event + RANDOM_EVENT3 + (8*m);
-                        currentPlayer.setBalance(currentPlayer.getBalance() + 8*m);
-                        break;
-                    case 4:
-                        event = event + RANDOM_EVENT4 + (2*m);
-                        currentPlayer.setBalance(currentPlayer.getBalance() + 2*m);
-                        break;
-                    case 5:
-                        if(!currentPlayer.isLowest()) {
-                            event = event + RANDOM_EVENT5 + (4 * m);
-                            currentPlayer.setBalance(currentPlayer.getBalance() - 4 * m);
-                        } else {
+        if ((1 + (int) (Math.random() * ((100 - 1) + 1))) > randomEvent.getChance()) { // (!) NO RANDOM EVENT OCCURS
+            eventDetail = "NO RANDOM EVENT OCCURED";
 
-                        }
-                        break;
-                    case 6:
-                        if(!currentPlayer.isLowest()) {
-                            event = event + RANDOM_EVENT6;
-                            currentPlayer.setFood(currentPlayer.getBalance() / 2);
-                        }
-                        break;
-                    case 7:
-                        if(!currentPlayer.isLowest()) {
-                            event = event + RANDOM_EVENT7 + (6 * m) + "TO CLEAN IT UP.";
-                            currentPlayer.setBalance(currentPlayer.getBalance() - 6 * m);
-                        }
-                        break;
-                    default:
-                        event = "this should not happen";
-                        break;
+        } else { // RANDOM EVENT OCCURS
+
+            // SET FACTOR BASED ON ROUND && CHOOSE A RANDOM EVENT TO AFFECT PLAYER / DISPLAY TO SOP+TEXTBOX
+            randomEvent.setFactor(getCurrentRound());
+            int event_selector = (int) (Math.random() * 9); // RANGE OF [0,9]
+            eventDetail = randomEvent.getDetail(event_selector);
+
+            switch (event_selector + 1) { // CHANGE PLAYER PROPERTY BASED ON THE EVENT
+                case 1: // PLAYER (+) FOOD (+3) (+) ENERGY (+2)
+                    currentPlayer.setFood(currentPlayer.getFood() + 3);
+                    currentPlayer.setEnergy(currentPlayer.getEnergy() + 2);
+                    break;
+                case 2: // PLAYER (+) ORE (+2)
+                    currentPlayer.setOre(currentPlayer.getOre() + 2);
+                    break;
+                case 3: // PLAYER (+) BALANCE (8*m)
+                    eventDetail = eventDetail + (8 * randomEvent.getFactor());
+                    currentPlayer.setBalance(currentPlayer.getBalance() + 8 * randomEvent.getFactor());
+                    break;
+                case 4: // PLAYER (+) BALANCE (2*m)
+                    eventDetail += (2 * randomEvent.getFactor());
+                    currentPlayer.setBalance(currentPlayer.getBalance() + 2 * randomEvent.getFactor());
+                    break;
+                case 5: // PLAYER (-) BALANCE (4*m)
+                    if (!currentPlayer.isLowest()) { // BAD EVENT DO NOT HAPPEN TO LOWEST SCORE
+                        eventDetail +=  (4 * randomEvent.getFactor());
+                        currentPlayer.setBalance(currentPlayer.getBalance() - 4 * randomEvent.getFactor());
+                    }
+                    break;
+                case 6: // PLAYER (-) BALANCE (1/2)
+                    if (!currentPlayer.isLowest()) { // BAD EVENT DO NOT HAPPEN TO LOWEST SCORE
+                        currentPlayer.setFood(currentPlayer.getBalance() / 2);
+                    } else {
+                        eventDetail += "\nBUT GOD BRINGS MERCY ON THE NOOB SO NO BAD EVENT OCCURS";
+                    }
+                    break;
+                case 7: // PLAYER (-) BALANCE (6*m)
+                    if (!currentPlayer.isLowest()) { // BAD EVENT DO NOT HAPPEN TO LOWEST SCORE
+                        eventDetail += (6 * randomEvent.getFactor()) + "TO CLEAN IT UP.";
+                        currentPlayer.setBalance(currentPlayer.getBalance() - 6 * randomEvent.getFactor());
+                    } else {
+                        eventDetail += "\nBUT GOD BRINGS MERCY ON THE NOOB SO NO BAD EVENT OCCURS";
+                    }
+                    break;
+                case 8: //PLAYER (-) FOOD (1/4)
+                    if (!currentPlayer.isLowest()) { // BAD EVENT DO NOT HAPPEN TO LOWEST SCORE
+                        currentPlayer.setFood( (int) (currentPlayer.getFood() * 0.25));
+                    } else {
+                        eventDetail += "\nBUT GOD BRINGS MERCY ON THE NOOB SO NO BAD EVENT OCCURS";
+                    }
+                    break;
+                case 9:
+                    currentPlayer.setEnergy(currentPlayer.getEnergy() + 15);
+                    break;
+                case 10:
+                    currentPlayer.setFood(currentPlayer.getFood() + 8);
+                    break;
+                default:
+                    eventDetail = "this should not happen and sorry for using a switch statement";
+                    break;
                 }
-                messageBox.setText(event);
-                System.out.println(event);
-            } /*else { // random event DOES NOT OCCUR because this player sucks/lowest
-                event = e   vent + "God brings mercy on the poorest thus no random event";
-                System.out.println(event);
-                messageBox.setText(event);
-            }*/
-        } else { // random event DID NOT happen by chance
-            event = event + "No random event occured. For moment peace continues.";
-            System.out.println(event);
-            messageBox.setText(event);
-        }
-    }//END OF randomEvents()
+        } // END OF RANDOM EVENT AFFECT
 
+    // PRINT OUT RESULT OF RANDOM EVENT
+    messageBox.setText(eventDetail);
+    System.out.println(eventDetail);
+
+    } // END OF randomEvent()
+    // ************************************************************************************************ //
 
 } //END OF MapController class
 
