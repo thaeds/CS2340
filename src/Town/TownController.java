@@ -26,6 +26,10 @@ import java.util.*;
  * Created by Alex on 10/2/15.
  */
 public class TownController {
+
+    /**
+     * Activates effects when mouse hovers over certain buttons
+     */
         private void setMouseOver() {
             ColorAdjust ca = new ColorAdjust();
             ca.setBrightness(.5);
@@ -50,6 +54,10 @@ public class TownController {
     private GridPane buildings;
     @FXML
     private Button enterStore;
+
+    /**
+     * Listens for clicks to transition into stores
+     */
     public void initialize(){
         enterPub.setOnMouseClicked(a ->
         enterPub()
@@ -65,6 +73,10 @@ public class TownController {
     @FXML
     private Pane townWindow;
     Random rng = new Random();
+
+    /**
+     * Intializes pub game screen
+     */
     private void enterPub() {
         System.out.println("Entering Pub");
         Context.loadPub();
@@ -103,6 +115,10 @@ public class TownController {
 //        prevStage.close();
 //        stage.show();
     }
+
+    /**
+     * Saves game state
+     */
     @FXML
     public void saveGame() {
         Context.writeGameSaveState();

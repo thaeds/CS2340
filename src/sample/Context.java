@@ -24,43 +24,85 @@ public class Context {
         return currentPlayer;
     }
 
+    /**
+     * Gets current round
+     *
+     * @return the current round
+     */
     public static int getCurrentRound() {
         return currentRound;
     }
 
+    /**
+     * Sets current round
+     *
+     * @param i round being set
+     */
     public static void setCurrentRound(int i) {
         currentRound = i;
     }
 
+    /**
+     * Gets remaining time
+     *
+     * @return the amount of remaining time
+     */
     public static int getRemainingTime() {
         return remainingTime;
     }
 
+    /**
+     * Sets remaining time
+     *
+     * @param i amount of time being set
+     */
     public static void setRemainingTime(int i) {
         if (i > 0) {
             remainingTime = i;
         }
     }
 
-
+    /**
+     * Sets current player
+     *
+     * @param p player being sset
+     */
     public static void setCurrentPlayer(Player p) {
         System.out.println("Current Player" + p.toString());
         currentPlayer = p;
     }
+
+    /**
+     * clears players and stage
+     */
     public static void clear() {
         players = null;
         currentPlayer = null;
         mapStage = null;
         currentRound = 1;
     }
+
+    /**
+     * gets map stage
+     *
+     * @return map stage
+     */
     public static Stage getMapStage() {
         return mapStage;
     }
 
+    /**
+     * sets map stage
+     *
+     * @param mStage the stage being set
+     */
     public static void setMapStage(Stage mStage) {
         mapStage = mStage;
     }
 
+    /**
+     * loads map
+     */
     public static void loadMap() {
         FXMLLoader ldr = null;
         Parent root;
@@ -77,6 +119,9 @@ public class Context {
         }
     }
 
+    /**
+     * loads town
+     */
     public static void loadTown() {
         FXMLLoader ldr = null;
         Parent root;
@@ -99,6 +144,9 @@ public class Context {
         }
     }
 
+    /**
+     * loads pub
+     */
     public static void loadPub() {
         FXMLLoader ldr = null;
         Parent root;
@@ -121,6 +169,9 @@ public class Context {
         }
     }
 
+    /**
+     * loads store
+     */
     public static void loadStore() {
         FXMLLoader ldr = null;
         Parent root;
@@ -143,14 +194,27 @@ public class Context {
         }
     }
 
+    /**
+     * Sets players
+     *
+     * @param p  players being set
+     */
     public static void setPlayers(ArrayList<Player> p) {
         players = p;
     }
 
+    /**
+     * Sets remaining time
+     *
+     * @return the amount of remaining time
+     */
     public static ArrayList<Player> getPlayers() {
         return players;
     }
 
+    /**
+     * saves game
+     */
     public static void writeGameSaveState() {
         gameSaveState save = new gameSaveState();
         save.setCurrentPlayer(currentPlayer);
@@ -167,6 +231,9 @@ public class Context {
         }
     }
 
+    /**
+     * loads saved game
+     */
     public static void readGameSaveState() {
         try {
             FileInputStream f = new FileInputStream("M.U.L.E._Save.data");
@@ -188,6 +255,10 @@ public class Context {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * loads saved game
+     */
     public static void readGameSaveStateTest() {
         try {
             FileInputStream f = new FileInputStream("M.U.L.E._Save.data");

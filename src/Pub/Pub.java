@@ -29,12 +29,23 @@ public class Pub {
         pubMessage.setText("You won " + gamble(p) + " by gambling!");
     }
     @FXML
+    /**
+     * Exits the pub screen
+     *
+     */
     private void exitPub() {
         System.out.println("clicked on exit pub");
         Context.loadMap();
         Stage curStage = (Stage)pubWindow.getScene().getWindow();
         curStage.close();
     }
+
+    /**
+     * Initializes gambling sequence to give player
+     * a certain amount of money
+     *
+     * @param p player gambling
+     */
     private int gamble(Player p) {
         Random rng = new Random();
         int roundBonus = Context.getCurrentRound() % 4 + 50;
@@ -48,6 +59,13 @@ public class Pub {
         p.setBalance(p.getBalance() + winnings);
         return winnings;
     }
+
+    /**
+     * Tests gambling feature
+     *
+     * @param p player gambling
+     * @param random the random number being used in calculations
+     */
     public int gambleTest(Player p, double random) {
         double rng = random;
         int roundBonus = Context.getCurrentRound() % 4 + 50;

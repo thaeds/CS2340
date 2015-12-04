@@ -18,6 +18,9 @@ public class StartGameController implements Initializable {
 
     Stage prevStage;
 
+    /**
+     * Sets previous stage
+     */
     public void setPrevStage(Stage stage){
         this.prevStage = stage;
     }
@@ -26,6 +29,11 @@ public class StartGameController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
+    /**
+     * Starts game
+     *
+     * @param event triggers game start
+     */
     public void startGame(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         stage.setTitle("Shop Management");
