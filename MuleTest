@@ -1,0 +1,76 @@
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertArrayEquals;
+
+import java.util.ArrayList;
+
+/**
+ * Created by Kyrsten Greenfield on 11/1/2015.
+ */
+
+public class MuleTest {
+
+    /**
+     * METHODS TO TEST FOR M10
+     * 1) public Player nextTurn()
+     * 2) private int gamble(Player p)
+     * 3) private void setMouseOver()
+     * 4) public void nextPlayer()
+     * 5) public int getScore()
+    */
+
+    //private Player testNextTurn();
+    //private int testGamble(Player p);
+    //private void testSetMouseOver();
+    //private void testNextPlayer();
+    //private int testGetScore();
+
+    public static final int TIMEOUT = 200;
+
+    @Before
+    public void setUp() {
+        Player p1 = new Player("Kyrsten", "Flapper", green);
+        Player p2 = new Player("Hyunook", "Buzzite", blue);
+        Player p3 = new Player("Joseph", "Human", red);
+        ArrayList<Player> playerList = new ArrayList<>(3);
+        playerList.add(p1);
+        playerList.add(p2);
+        playerList.add(p3);
+    }
+    @Test(timeout = TIMEOUT)
+    public void testNextTurn() {}
+    @Test(timeout = TIMEOUT)
+    public void testGamble() {}
+    @Test(timeout = TIMEOUT)
+    public void testSetMouseOver() {}
+    @Test(timeout = TIMEOUT)
+    public void testNextPlayer() {
+
+    }
+    @Test(timeout = TIMEOUT)
+    public void testGetScore() {
+        //beginner: 8 food, 4 energy, 0 ore
+        assertEquals(0, p1.getNumberOfTiles()); //flapper: $1600
+        assertEquals(0, p2.getNumberOfTiles()); //others: $1000
+        assertEquals(0, p3.getNumberOfTiles()); //human: $600
+
+        assertEquals(0, p2.getScore());
+        assertEquals(0, p1.getScore());
+        assertEquals(0, p3.getScore());
+
+        p1.addTile(mountain);
+        assertEquals(500 + 1600 + 8 + 4, p1.getScore());
+
+        p2.addTitle(river);
+        asserEquals(500 + 1000 + 8 + 4, p2.getScore());
+
+        p3.addTitle(title);
+        assertEquals(500 + 600 + 8 + 4, p3.getScore());
+
+
+
+    }
+}
